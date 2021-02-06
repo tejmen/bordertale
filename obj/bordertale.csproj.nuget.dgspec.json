@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\meena.mengle\\Desktop\\tejas\\Code\\bordertale\\bordertale.csproj": {}
+    "C:\\Users\\Manas Mengle\\Documents\\CODE\\Github Repos\\bordertale\\bordertale.csproj": {}
   },
   "projects": {
-    "C:\\Users\\meena.mengle\\Desktop\\tejas\\Code\\bordertale\\bordertale.csproj": {
+    "C:\\Users\\Manas Mengle\\Documents\\CODE\\Github Repos\\bordertale\\bordertale.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\meena.mengle\\Desktop\\tejas\\Code\\bordertale\\bordertale.csproj",
+        "projectUniqueName": "C:\\Users\\Manas Mengle\\Documents\\CODE\\Github Repos\\bordertale\\bordertale.csproj",
         "projectName": "bordertale",
-        "projectPath": "C:\\Users\\meena.mengle\\Desktop\\tejas\\Code\\bordertale\\bordertale.csproj",
-        "packagesPath": "C:\\Users\\meena.mengle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\meena.mengle\\Desktop\\tejas\\Code\\bordertale\\obj\\",
+        "projectPath": "C:\\Users\\Manas Mengle\\Documents\\CODE\\Github Repos\\bordertale\\bordertale.csproj",
+        "packagesPath": "C:\\Users\\Manas Mengle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Manas Mengle\\Documents\\CODE\\Github Repos\\bordertale\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\meena.mengle\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Manas Mengle\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\meena.mengle\\Documents\\Software\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
