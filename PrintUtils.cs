@@ -1,19 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace bordertale
 {
     class PrintUtils
     {
-        public static string PrintHash(string text)
+        public static string PadHash(string text, int length)
         {
             string finalString = '#' + text + '#';
-            finalString = finalString.Insert(1, " ");
-            finalString = finalString.Insert(finalString.Length - 1, " ");
+            while (length > finalString.Length)
+            {
+                finalString = finalString.Insert(1, " ");
+                if (length > finalString.Length)
+                {
+                    finalString = finalString.Insert(finalString.Length - 1, " ");
+                }
+            }
+
             return finalString;
+        }
+        
+        public static string GetHash(int length)
+        {
+            var finalString = new string('#', length);
+            return finalString.ToString();
         }
     }
 }

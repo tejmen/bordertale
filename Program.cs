@@ -6,8 +6,8 @@ namespace bordertale
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine(PrintUtils.PrintHash(Console.ReadLine()));
+            Console.WriteLine(PrintUtils.GetHash(28));
+            Console.WriteLine(PrintUtils.PadHash("Welcome to Bordertale!", 28));
             Console.ReadKey();
         }
     }
