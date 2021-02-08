@@ -25,11 +25,12 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
+    - name: Navigate to build directory
+      run: cd /home/runner/work/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
     - name: Archive Build
       uses: TheDoctor0/zip-release@0.4.1
       with:
         filename: 'latest.zip'
-        path: /home/runner/work/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
