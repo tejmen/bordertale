@@ -8,6 +8,12 @@ namespace bordertale
         {
             int width = 28;
             Console.WriteLine(" _______  _______  ______    ______   _______  ______    _______  _______  ___      _______ ");
+            Console.WriteLine("|  _    ||       ||    _ |  |      | |       ||    _ |  |       ||   _   ||   |    |       |");
+            Console.WriteLine("| |_|   ||   _   ||   | ||  |  _    ||    ___||   | ||  |_     _||  |_|  ||   |    |    ___|");
+            Console.WriteLine("|       ||  | |  ||   |_||_ | | |   ||   |___ |   |_||_   |   |  |       ||   |    |   |___ ");
+            Console.WriteLine("|  _   | |  |_|  ||    __  || |_|   ||    ___||    __  |  |   |  |       ||   |___ |    ___|");
+            Console.WriteLine("| |_|   ||       ||   |  | ||       ||   |___ |   |  | |  |   |  |   _   ||       ||   |___ ");
+            Console.WriteLine("|_______||_______||___|  |_||______| |_______||___|  |_|  |___|  |__| |__||_______||_______|");
             PrintUtils.GetHash(width);
             PrintUtils.CenterPadHash("Welcome to Bordertale!", width);
             PrintUtils.CenterPadHash("- Play -", width);
