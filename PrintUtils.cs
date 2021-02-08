@@ -6,7 +6,7 @@ namespace bordertale
 {
     class PrintUtils
     {
-        public static void PadHash(string text, int length)
+        public static void CenterPadHash(string text, int length)
         {
             string finalString = '#' + text + '#';
             while (length > finalString.Length)
@@ -25,6 +25,12 @@ namespace bordertale
         {
             var finalString = new string('#', length);
             Console.WriteLine(finalString.ToString());
+        }
+        public static void LeftPadHash(string text, int length)
+        {
+            string finalString = text.PadRight(length-3);
+            finalString = "# " + finalString + '#';
+            Console.WriteLine(finalString);
         }
     }
 }
