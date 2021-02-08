@@ -2,12 +2,11 @@
 
 namespace bordertale
 {
-    class Program
+    class Program : MainGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(PrintUtils.GetHash(28));
-            Console.WriteLine(PrintUtils.PadHash("Welcome to Bordertale!", 28));
+            MainGame.TitleScreen();
             Console.ReadKey();
         }
     }
