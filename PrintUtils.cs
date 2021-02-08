@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace bordertale
 {
     class PrintUtils
     {
-        public static string PadHash(string text, int length)
+        public static void PadHash(string text, int length)
         {
             string finalString = '#' + text + '#';
             while (length > finalString.Length)
@@ -17,13 +18,13 @@ namespace bordertale
                 }
             }
 
-            return finalString;
+            Console.WriteLine(finalString);
         }
         
-        public static string GetHash(int length)
+        public static void GetHash(int length)
         {
             var finalString = new string('#', length);
-            return finalString.ToString();
+            Console.WriteLine(finalString.ToString());
         }
     }
 }

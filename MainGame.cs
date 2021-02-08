@@ -4,19 +4,21 @@ namespace bordertale
 {
     internal class MainGame
     {
+        public static int width = 28;
 
         public static void TitleScreen()
         {
-            int width = 28;
+            Console.WriteLine(" _______  _______  ______    ______   _______  ______    _______  _______  ___      _______ ");
 
-            Console.WriteLine(PrintUtils.GetHash(width));
-            Console.WriteLine(PrintUtils.PadHash("Welcome to Bordertale!", width));
-            Console.WriteLine(PrintUtils.PadHash("- Play -", width));
-            Console.WriteLine(PrintUtils.PadHash("- Resume -", width));
-            Console.WriteLine(PrintUtils.PadHash("- Help -", width));
-            Console.WriteLine(PrintUtils.PadHash("- Acknoledgements -", width));
-            Console.WriteLine(PrintUtils.PadHash("- Quit -", width));
-            Console.WriteLine(PrintUtils.PadHash("Copyright 2019 tejmen09", width));
+            PrintUtils.GetHash(width);
+            PrintUtils.PadHash("Welcome to Bordertale!", width);
+            PrintUtils.PadHash("- Play -", width);
+            PrintUtils.PadHash("- Resume -", width);
+            PrintUtils.PadHash("- Help -", width);
+            PrintUtils.PadHash("- Acknoledgements -", width);
+            PrintUtils.PadHash("- Quit -", width);
+            PrintUtils.PadHash("Copyright 2021 tejmen09", width);
+            PrintUtils.GetHash(width);
         }
     }
 }
