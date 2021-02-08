@@ -4,12 +4,10 @@ namespace bordertale
 {
     internal class MainGame
     {
-        public static int width = 28;
-
         public static void TitleScreen()
         {
+            int width = 28;
             Console.WriteLine(" _______  _______  ______    ______   _______  ______    _______  _______  ___      _______ ");
-
             PrintUtils.GetHash(width);
             PrintUtils.PadHash("Welcome to Bordertale!", width);
             PrintUtils.PadHash("- Play -", width);
