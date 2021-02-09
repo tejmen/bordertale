@@ -34,7 +34,7 @@ namespace bordertale
                     case "play":
                         inLoop = false;
                         break;
-                    // @todo StartGame Function
+                    // TODO StartGame Function
                     case "help":
                         inLoop = false;
                         HelpScreen();
@@ -47,7 +47,7 @@ namespace bordertale
                         Thread.Sleep(500);
                         Environment.Exit(0);
                         break;
-                    // @todo Create QuitGame
+                    // TODO Create QuitGame
                     case "acknowledgements":
                         inLoop = false;
                         AcknowledgementsScreen();
@@ -55,7 +55,7 @@ namespace bordertale
                     case "resume":
                         inLoop = false;
                         break;
-                    // @todo ResumeGame from save File
+                    // TODO ResumeGame from save File
                     default:
                         Console.WriteLine("Please enter a valid command.");
                         break;
