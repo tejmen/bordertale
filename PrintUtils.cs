@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 
 namespace bordertale
 {
@@ -20,7 +18,7 @@ namespace bordertale
 
             Console.WriteLine(finalString);
         }
-        
+
         public static void GetHash(int length)
         {
             var finalString = new string('#', length);
@@ -28,7 +26,7 @@ namespace bordertale
         }
         public static void LeftPadHash(string text, int length)
         {
-            string finalString = text.PadRight(length-3);
+            string finalString = text.PadRight(length - 3);
             finalString = "# " + finalString + '#';
             Console.WriteLine(finalString);
         }
