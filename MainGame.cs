@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace bordertale
 {
@@ -23,7 +24,44 @@ namespace bordertale
             PrintUtils.CenterPadHash("- Quit -", width);
             PrintUtils.CenterPadHash("Copyright 2021 tejmen09", width);
             PrintUtils.GetHash(width);
-            
+            bool inLoop = true;
+            while (inLoop)
+            {
+                Console.Write("> ");
+                string option = Console.ReadLine().ToLower().Trim();
+                switch (option)
+                {
+                    case "play":
+                        inLoop = false;
+                        break;
+                    // TODO StartGame Function
+                    case "help":
+                        inLoop = false;
+                        HelpScreen();
+                        break;
+                    case "quit":
+                        inLoop = false;
+                        PrintUtils.GetHash(15);
+                        PrintUtils.CenterPadHash("GOODBYE!!", 15);
+                        PrintUtils.GetHash(15);
+                        Thread.Sleep(500);
+                        Environment.Exit(0);
+                        break;
+                    // TODO QuitGame
+                    case "acknowledgements":
+                        inLoop = false;
+                        break;
+                    // TODO AcknoledgeScreen() Placeholder Untill Writen
+                    case "resume":
+                        inLoop = false;
+                        break;
+                    // TODO ResumeGame from save File
+                    default:
+                        Console.WriteLine("Please enter a valid command.");
+                        break;
+
+                }
+            }
         }
         public static void HelpScreen()
         {
@@ -47,6 +85,8 @@ namespace bordertale
             PrintUtils.LeftPadHash("• Equip your armour for", width);
             PrintUtils.LeftPadHash(" extra protection.", width);
             PrintUtils.CenterPadHash("Copyright 2019 tejmen09", width);
+            PrintUtils.GetHash(width);
+            TitleScreen();
         }
     }
 }
