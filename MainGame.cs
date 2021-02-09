@@ -102,6 +102,7 @@ namespace bordertale
             PrintUtils.LeftPadHash(" extra protection.", width);
             PrintUtils.CenterPadHash("Copyright 2019 tejmen09", width);
             PrintUtils.GetHash(width);
+            Thread.Sleep(500);
             TitleScreen();
         }
     }
