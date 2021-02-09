@@ -50,8 +50,8 @@ namespace bordertale
                     // @todo Create QuitGame
                     case "acknowledgements":
                         inLoop = false;
+                        AcknowledgementsScreen();
                         break;
-                    // @todo AcknoledgeScreen() Placeholder Untill Writen
                     case "resume":
                         inLoop = false;
                         break;
@@ -63,6 +63,22 @@ namespace bordertale
                 }
             }
         }
+
+        private static void AcknowledgementsScreen()
+        {
+            PrintUtils.GetHash(31);
+            PrintUtils.CenterPadHash("Acknowledgements", 31);
+            PrintUtils.CenterPadHash("Beta Tested by:", 31);
+            PrintUtils.LeftPadHash("• appcreatorguy ", 31);
+            PrintUtils.LeftPadHash("• tejmen09 ", 31);
+            PrintUtils.LeftPadHash("Helped By:", 31);
+            PrintUtils.LeftPadHash("• appcreatorguy", 31);
+            PrintUtils.LeftPadHash("• tejmen09", 31);
+            PrintUtils.CenterPadHash(" Copyright 2019 Tejas Mengle ", 31);
+            PrintUtils.GetHash(31);
+            TitleScreen();
+        }
+
         public static void HelpScreen()
         {
             int width = 31;
