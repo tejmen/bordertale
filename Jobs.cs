@@ -13,20 +13,17 @@ namespace bordertale
         public int ap;
         public int heal;
         // TODO Add Weapons Class
-        public Job(int max, int ap, bool canHeal = false, int heal = 0)
+        public Job(int max, int ap, bool int heal = 0)
         {
             this.max = max;
             this.ap = ap;
-            if (canHeal)
-            {
-                this.heal = heal;
-            }
+            this.heal = heal;
         }
     }
     public class Jobs
     {
         public Job fighter = new Job(120, 40);
-        public Job wizard = new Job(300, 20);
-        public Job healer = new Job(200, 20, true, 40);
+        public Job healer = new Job(200, 20, 40);
+        public Job wizard = new Job(300, 20, 20);
     }
 }
