@@ -54,14 +54,13 @@ namespace bordertale
             bool inLoop = true;
             while (inLoop)
             {
-                Console.Write("> ");
-                string option = Console.ReadLine().ToLower().Trim();
+                string option = PrintUtils.Input().ToLower();
                 switch (option)
                 {
                     case "play":
                         inLoop = false;
+                        MainGame.StartGame();
                         break;
-                    // TODO StartGame Function
                     case "help":
                         inLoop = false;
                         HelpScreen();

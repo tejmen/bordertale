@@ -1,4 +1,6 @@
-﻿namespace bordertale
+﻿using bordertale.Entities;
+
+namespace bordertale
 {
     public class Job
     {
@@ -6,18 +8,14 @@
         public int hp;
         public int ap;
         public int heal;
+        public string name;
         // TODO Add Weapons Class
-        public Job(int max, int ap, int heal = 0)
+        public Job(string name, int max, int ap, int heal = 0)
         {
             this.max = max;
             this.ap = ap;
             this.heal = heal;
+            this.name = name;
         }
-    }
-    public class Jobs
-    {
-        public Job fighter = new Job(120, 40);
-        public Job healer = new Job(200, 20, 40);
-        public Job wizard = new Job(300, 20, 20);
     }
 }

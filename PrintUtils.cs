@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace bordertale
 {
@@ -54,6 +55,21 @@ namespace bordertale
             string finalString = text.PadRight(length - 3);
             finalString = "# " + finalString + '#';
             return finalString;
+        }
+        public static void SlowPrint(string text, int delayInMilliseconds = 50)
+        {
+            foreach (char c in text)
+            {
+                Console.Write(c);
+                Thread.Sleep(delayInMilliseconds);
+            }
+            Console.Write("\n");
+        }
+        public static string Input(string prompt = ">")
+        {
+            Console.Write($"{prompt} ");
+            String input = Console.ReadLine().Trim();
+            return input;
         }
     }
 }

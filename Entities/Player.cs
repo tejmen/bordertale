@@ -14,6 +14,12 @@
             dead = false;
             money = 0;
         }
+        public void SetJob()
+        {
+            this.hp = this.job.max;
+            this.max = this.job.max;
+            this.heal = this.job.heal;
+        }
         public string name;
         public Job job;
         public int heal;
