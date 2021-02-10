@@ -7,7 +7,7 @@ namespace bordertale
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            MainGame.TitleScreen();
+            Screens.TitleScreen();
             Console.ReadKey();
         }
     }
