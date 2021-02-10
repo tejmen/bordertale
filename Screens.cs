@@ -73,7 +73,6 @@ namespace bordertale
                         Thread.Sleep(500);
                         Environment.Exit(0);
                         break;
-                    // TODO Create QuitGame
                     case "acknowledgements":
                         inLoop = false;
                         AcknowledgementsScreen();
