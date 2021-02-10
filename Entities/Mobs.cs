@@ -23,6 +23,8 @@ namespace bordertale.Entities
     }
     public class Mobs
     {
-        
+        //@todo Add rest of Text
+        //@body Add the rest of the mobs, complete with their respective strings.
+        public static Mob GreenSlime = new Mob(PrintUtils.GetHashReturn(42) + "\n" + PrintUtils.CenterPadHashReturn("A Green Slime appeared out of the dark", 42) + "\n" + PrintUtils.GetHashReturn(42), null, null, null);
     }
 }
