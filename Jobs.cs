@@ -13,7 +13,7 @@ namespace bordertale
         public int ap;
         public int heal;
         // TODO Add Weapons Class
-        public Job(int max, int ap, bool int heal = 0)
+        public Job(int max, int ap, int heal = 0)
         {
             this.max = max;
             this.ap = ap;
