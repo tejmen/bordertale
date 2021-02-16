@@ -8,6 +8,7 @@ namespace bordertale
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Screens.TitleScreen();
+            public static Player player = new Player();
             Console.ReadKey();
         }
     }
