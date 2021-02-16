@@ -16,4 +16,4 @@ jobs:
         uses: fateyan/action-discord-notifier@v1.2.0
         with:
           message-title: New Commits Pushed
-          webhook: https://discordapp.com/api/00000000000/secret
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
