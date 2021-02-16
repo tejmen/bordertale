@@ -6,7 +6,7 @@ namespace bordertale
     internal class Screens
     {
 
-        public static void HelpScreen()
+        public static void HelpScreen(bool inGame)
         {
             int width = 31;
             PrintUtils.GetHash(width);
@@ -30,7 +30,13 @@ namespace bordertale
             PrintUtils.CenterPadHash("Copyright 2019 tejmen09", width);
             PrintUtils.GetHash(width);
             Thread.Sleep(500);
-            TitleScreen();
+            switch (inGame)
+            {
+                case true:
+                    MainGame.MainGameLoop();
+                default:
+                    TitleScreen();
+            }
         }
         public static void TitleScreen()
         {
@@ -79,8 +85,8 @@ namespace bordertale
                         break;
                     case "resume":
                         inLoop = false;
+                        MainGame.MainGameLoop();
                         break;
-                    // TODO ResumeGame from save File
                     default:
                         Console.WriteLine("Please enter a valid command.");
                         break;
