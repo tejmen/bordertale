@@ -9,11 +9,11 @@
         protected int max;
         public void HpChange(int amount)
         {
-            hp += amount;
+            this.hp += amount;
         }
         public void HpReset()
         {
-            hp = max;
+            this.hp = max;
         }
     }
 }
