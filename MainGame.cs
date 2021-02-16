@@ -5,9 +5,9 @@ namespace bordertale
 {
     public class MainGame
     {
+        public static Player player = new Player();
         public static void StartGame()
         {
-            Player player = new Player();
             PrintUtils.SlowPrint("What is your name young traveller?");
             player.name = PrintUtils.Input();
             if (player.name == "dev")
@@ -50,8 +50,17 @@ namespace bordertale
             PrintUtils.GetHash(28);
             PrintUtils.CenterPadHash("Let's Jump In!", 28);
             PrintUtils.GetHash(28);
-            // @todo Add MainGameLoop()
-            // @body Add the main game loop, which leads into game functionality.
+            MainGameLoop();
+            // TODO MainGameLoop()
+            // BODY the main game loop, which leads into game functionality.
+        }
+        public static void MainGameLoop()
+        {
+            // @todo add PrintLocation();
+            while (!player.dead)
+            {
+
+            }
         }
     }
 }
