@@ -55,7 +55,7 @@ namespace bordertale
         }
         public static void MainGameLoop()
         {
-            // @todo add Player.PrintLocation();
+            player.PrintLocation();
             while (!player.dead)
             {
                 Prompt();

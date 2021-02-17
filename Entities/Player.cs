@@ -1,6 +1,4 @@
-﻿using bordertale.Map;
-
-namespace bordertale.Entities
+﻿namespace bordertale.Entities
 {
     public class Player : Entity
     {
@@ -15,12 +13,22 @@ namespace bordertale.Entities
             heal = 0;
             dead = false;
             money = 0;
+            location = Map.b2;
         }
         public void SetJob()
         {
             this.hp = this.job.max;
             this.max = this.job.max;
             this.heal = this.job.heal;
+        }
+        public void PrintLocation()
+        {
+            System.Console.WriteLine("");
+            int length = 4 + this.location.description.Length;
+            PrintUtils.GetHash(length);
+            PrintUtils.LeftPadHash(this.location.zoneName, length);
+            PrintUtils.LeftPadHash(this.location.description, length);
+            PrintUtils.GetHash(length);
         }
         public string name;
         public Job job;
