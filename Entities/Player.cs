@@ -1,4 +1,6 @@
-﻿namespace bordertale.Entities
+﻿using bordertale.Map;
+
+namespace bordertale.Entities
 {
     public class Player : Entity
     {
@@ -23,10 +25,10 @@
         public string name;
         public Job job;
         public int heal;
+        public Location location;
         // TODO Add Effects Class
         // TODO Add Armour Class
         // TODO Add Shield Class
-        // TODO Add Location Class
         public bool dead;
         // TODO Add Item Class
         // Add Weapons Class

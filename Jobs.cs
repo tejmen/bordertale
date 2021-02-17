@@ -1,6 +1,4 @@
-﻿using bordertale.Entities;
-
-namespace bordertale
+﻿namespace bordertale
 {
     public class Job
     {
