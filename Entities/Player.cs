@@ -26,12 +26,12 @@ namespace bordertale.Entities
         public Job job;
         public int heal;
         public Location location;
-        // TODO Add Effects Class
-        // TODO Add Armour Class
-        // TODO Add Shield Class
+        // @todo Add Effects Class
+        // @todo Add Armour Class
+        // @todo Add Shield Class
         public bool dead;
-        // TODO Add Item Class
-        // Add Weapons Class
-        // TODO Add Missions Class
+        // @todo Add Item Class
+        // @todo Add Weapons Class
+        // @todo Add Missions Class
     }
 }
