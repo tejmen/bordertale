@@ -1,19 +1,21 @@
-﻿namespace bordertale.Entities
+﻿using System;
+
+namespace bordertale.Entities
 {
     public class Player : Entity
     {
         public Player()
         {
-            name = "";
-            hp = 0;
-            max = 0;
-            xp = 0;
-            ap = 0;
-            job = null;
-            heal = 0;
-            dead = false;
-            money = 0;
-            location = Map.b2;
+            this.name = "";
+            this.hp = 0;
+            this.max = 0;
+            this.xp = 0;
+            this.ap = 0;
+            this.job = null;
+            this.heal = 0;
+            this.dead = false;
+            this.money = 0;
+            this.location = Map.b2;
         }
         public void SetJob()
         {
@@ -30,6 +32,51 @@
             PrintUtils.LeftPadHash(this.location.description, length);
             PrintUtils.GetHash(length);
         }
+        public void Move(string direction)
+        {
+            switch (direction)
+            {
+                case "up":
+                    if (this.location.up != null)
+                    {
+                        Location destination = this.location.up;
+                        this.SetLocation(destination);
+                    }
+                    break;
+                case "down":
+                    if (this.location.down != null)
+                    {
+                        Location destination = this.location.down;
+                        this.SetLocation(destination);
+                    }
+                    break;
+                case "left":
+                    if (this.location.left != null)
+                    {
+                        Location destination = this.location.left;
+                        this.SetLocation(destination);
+                    }
+                    break;
+                case "right":
+                    if (this.location.right != null)
+                    {
+                        Location destination = this.location.right;
+                        this.SetLocation(destination);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("You have either reached the end of the map, or typed your command in wrong.");
+                    break;
+            }
+        }
+
+        public void SetLocation(Location destination)
+        {
+            Console.WriteLine($"\nYou have moved to {destination.zoneName}.");
+            this.location = destination;
+            this.PrintLocation();
+        }
+
         public string name;
         public Job job;
         public int heal;

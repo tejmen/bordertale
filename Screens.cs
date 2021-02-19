@@ -112,7 +112,7 @@ namespace bordertale
             PrintUtils.CenterPadHash("STATS", len);
             PrintUtils.LeftPadHash($"You are {MainGame.player.name} the {MainGame.player.job.name}. ", len);
             PrintUtils.LeftPadHash($"You have {MainGame.player.hp} hp.",len);
-            PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {}.",len);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp/1000)}.",len);
             PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len);
             PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len);
             // @todo add rest of stats screen

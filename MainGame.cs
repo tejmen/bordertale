@@ -16,6 +16,7 @@ namespace bordertale
                 player.name = "Developer";
                 player.job = new Job("Fighter", 120, 40);
                 player.SetJob();
+                Map.PopulateLocation();
                 MainGameLoop();
             }
             PrintUtils.SlowPrint($"What is will your role be {player.name}?");
@@ -44,6 +45,7 @@ namespace bordertale
                 }
             }
             player.SetJob();
+            Map.PopulateLocation();
             PrintUtils.SlowPrint($"Welcome {player.name} the {player.job.name}.");
             PrintUtils.SlowPrint("Welcome to this fanatasy world!", 30);
             PrintUtils.SlowPrint("Just dont get lost...", 100);
@@ -72,59 +74,61 @@ namespace bordertale
             while (inLoop)
             {
                 string action = PrintUtils.Input().ToLower();
-                if (action.Contains("move"))
+                string[] words = action.Split(' ');
+                switch (words[0])
                 {
-                    string direction = action.Split(' ')[1];
-                    
-                }
-                else
-                {
-                    switch (action)
-                    {
-                        case "quit":
-                            inLoop = false;
-                            PrintUtils.GetHash(15);
-                            PrintUtils.CenterPadHash("GOODBYE!!", 15);
-                            PrintUtils.GetHash(15);
-                            Thread.Sleep(500);
-                            Environment.Exit(0);
-                            break;
-                        case "look":
-                            inLoop = false;
-                            // @todo add Player.Examine()
-                            break;
-                        case "act":
-                            inLoop = false;
-                            // @todo add Player.Act()
-                            break;
-                        case "talk":
-                            inLoop = false;
-                            // @todo add Player.Talk()
-                            break;
-                        case "equip":
-                            inLoop = false;
-                            // @todo add Player.Equip()
-                            break;
-                        case "stats":
-                            inLoop = false;
-                            Screens.Stats();
-                            break;
-                        case "help":
-                            inLoop = false;
-                            Screens.HelpScreen(true);
-                            break;
-                        case "mission":
-                            inLoop = false;
-                            // @todo add Player.Missions()
-                            break;
-                        case "money":
-                            player.money = Convert.ToInt32(PrintUtils.Input("Money = ?"));
-                            Console.WriteLine(player.money);
-                            break;
-                        default:
-                            Console.WriteLine("Unknown action, try again.");
-                            break;
-                    }
+                    case "quit":
+                        inLoop = false;
+                        PrintUtils.GetHash(15);
+                        PrintUtils.CenterPadHash("GOODBYE!!", 15);
+                        PrintUtils.GetHash(15);
+                        Thread.Sleep(500);
+                        Environment.Exit(0);
+                        break;
+                    case "look":
+                        inLoop = false;
+                        // @todo add Player.Examine()
+                        break;
+                    case "act":
+                        inLoop = false;
+                        // @todo add Player.Act()
+                        break;
+                    case "talk":
+                        inLoop = false;
+                        // @todo add Player.Talk()
+                        break;
+                    case "equip":
+                        inLoop = false;
+                        // @todo add Player.Equip()
+                        break;
+                    case "stats":
+                        inLoop = false;
+                        Screens.Stats();
+                        break;
+                    case "help":
+                        inLoop = false;
+                        Screens.HelpScreen(true);
+                        break;
+                    case "mission":
+                        inLoop = false;
+                        // @todo add Player.Missions()
+                        break;
+                    case "money":
+                        inLoop = false;
+                        player.money = Convert.ToInt32(PrintUtils.Input("Money = ?"));
+                        Console.WriteLine(player.money);
+                        break;
+                    case "move":
+                        inLoop = false;
+                        if (words.Length > 1)
+                        {
+                            string direction = words[1];
+                            player.Move(direction);
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Unknown action, try again.");
+                        break;
                 }
             }
         }
