@@ -107,7 +107,7 @@ namespace bordertale
                             break;
                         case "stats":
                             inLoop = false;
-                            // @todo add Screens.Stats()
+                            Screens.Stats();
                             break;
                         case "help":
                             inLoop = false;
