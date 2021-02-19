@@ -110,14 +110,15 @@ namespace bordertale
             int len = 66;
             PrintUtils.GetHash(len);
             PrintUtils.CenterPadHash("STATS", len);
-            PrintUtils.LeftPadHash($"You are {} the {}. ", len);
-            PrintUtils.LeftPadHash($"You have {} hp.",len);
-            PrintUtils.LeftPadHash($"You have {} xp and you are at level {}.",len);
-            PrintUtils.LeftPadHash($"You have {} strength.", len);
-            PrintUtils.LeftPadHash($"You have ₴ {}", len);
-            PrintUtils.LeftPadHash($"Your current weapon, the {} does {} of damage.", len);
-            PrintUtils.LeftPadHash($"Your Inventory contains: , end=", len);
-            PrintUtils.LeftPadHash($"You are wearing these pieces of armour: ', end=''", len);
+            PrintUtils.LeftPadHash($"You are {MainGame.player.name} the {MainGame.player.job.name}. ", len);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.hp} hp.",len);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {}.",len);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len);
+            PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len);
+            // @todo add rest of stats screen
+          //  PrintUtils.LeftPadHash($"Your current weapon, the {} does {} of damage.", len);
+          //  PrintUtils.LeftPadHash($"Your Inventory contains: , end=", len);
+          //  PrintUtils.LeftPadHash($"You are wearing these pieces of armour: ', end=''", len);
             PrintUtils.GetHash(len);
         }
     }

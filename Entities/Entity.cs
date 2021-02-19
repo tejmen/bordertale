@@ -5,7 +5,7 @@
         public int hp;
         public int money;
         public int ap;
-        protected int xp;
+        public int xp;
         protected int max;
         public void HpChange(int amount)
         {
