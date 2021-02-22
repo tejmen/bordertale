@@ -87,7 +87,7 @@ namespace bordertale
                         break;
                     case "look":
                         inLoop = false;
-                        // @todo add Player.Examine()
+                        player.Examine();   
                         break;
                     case "act":
                         inLoop = false;
@@ -95,7 +95,7 @@ namespace bordertale
                         break;
                     case "talk":
                         inLoop = false;
-                        // @todo add Player.Talk()
+                        player.Talk();
                         break;
                     case "equip":
                         inLoop = false;

@@ -77,6 +77,21 @@ namespace bordertale.Entities
             this.PrintLocation();
         }
 
+        public void Examine()
+        {
+            int length = 4 + this.location.examination.Length;
+            PrintUtils.GetHash(length);
+            PrintUtils.LeftPadHash(this.location.examination,length);
+            PrintUtils.GetHash(length);
+        }
+
+        public void Talk()
+        {
+            int length = 4 + this.location.dialogue.Length;
+            PrintUtils.GetHash(length);
+            PrintUtils.LeftPadHash(this.location.dialogue,length);
+            PrintUtils.GetHash(length);
+        }
         public string name;
         public Job job;
         public int heal;
