@@ -1,10 +1,16 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Reflection;
+using System;
 
 namespace bordertale
 {
     public class Location
     {
+        public Location(string name)
+        {
+            this.name = name;
+        }
         public void Populate(string zoneName, string description, string examination,
             Location up, Location down, Location left, Location right,
             string dialogue = "Theres nobody to talk to here...",
@@ -29,27 +35,33 @@ namespace bordertale
         public Location left;
         public Location right;
         public string dialogue;
+        public MethodInfo action = typeof(Map).GetMethod(name);
+        public string name;
+        public void Action()
+        {
+
+        }
     }
 
     public static class Map
     {
         // Instantiation of Locations
-        public static Location a1 = new Location();
-        public static Location a2 = new Location();
-        public static Location a3 = new Location();
-        public static Location a4 = new Location();
-        public static Location b1 = new Location();
-        public static Location b2 = new Location();
-        public static Location b3 = new Location();
-        public static Location b4 = new Location();
-        public static Location c1 = new Location();
-        public static Location c2 = new Location();
-        public static Location c3 = new Location();
-        public static Location c4 = new Location();
-        public static Location d1 = new Location();
-        public static Location d2 = new Location();
-        public static Location d3 = new Location();
-        public static Location d4 = new Location();
+        public static Location a1 = new Location("a1");
+        public static Location a2 = new Location("a2");
+        public static Location a3 = new Location("a3");
+        public static Location a4 = new Location("a4");
+        public static Location b1 = new Location("b1");
+        public static Location b2 = new Location("b2");
+        public static Location b3 = new Location("b3");
+        public static Location b4 = new Location("b4");
+        public static Location c1 = new Location("c1");
+        public static Location c2 = new Location("c2");
+        public static Location c3 = new Location("c3");
+        public static Location c4 = new Location("c4");
+        public static Location d1 = new Location("d1");
+        public static Location d2 = new Location("d2");
+        public static Location d3 = new Location("d3");
+        public static Location d4 = new Location("d4");
         // Population of Locations
         public static void PopulateLocation()
         {
@@ -188,5 +200,6 @@ namespace bordertale
                 d3,
                 null);
         }
+        // Creation of Actions
     }
 }
