@@ -2,19 +2,16 @@
 using System.Security.Cryptography;
 using System.Reflection;
 using System;
+using bordertale.Entities;
 
 namespace bordertale
 {
     public class Location
     {
-        public Location(string name)
-        {
-            this.name = name;
-        }
         public void Populate(string zoneName, string description, string examination,
             Location up, Location down, Location left, Location right,
             string dialogue = "Theres nobody to talk to here...",
-            bool solved = false)
+            Action action = null, bool solved = false)
         {
             this.zoneName = zoneName;
             this.description = description;
@@ -25,6 +22,7 @@ namespace bordertale
             this.down = down;
             this.left = left;
             this.right = right;
+            this.act = action;
         }
         public string zoneName;
         public string description;
@@ -35,33 +33,29 @@ namespace bordertale
         public Location left;
         public Location right;
         public string dialogue;
-        public MethodInfo action = typeof(Map).GetMethod(name);
-        public string name;
-        public void Action()
-        {
 
-        }
+        public Action act;
     }
 
     public static class Map
     {
         // Instantiation of Locations
-        public static Location a1 = new Location("a1");
-        public static Location a2 = new Location("a2");
-        public static Location a3 = new Location("a3");
-        public static Location a4 = new Location("a4");
-        public static Location b1 = new Location("b1");
-        public static Location b2 = new Location("b2");
-        public static Location b3 = new Location("b3");
-        public static Location b4 = new Location("b4");
-        public static Location c1 = new Location("c1");
-        public static Location c2 = new Location("c2");
-        public static Location c3 = new Location("c3");
-        public static Location c4 = new Location("c4");
-        public static Location d1 = new Location("d1");
-        public static Location d2 = new Location("d2");
-        public static Location d3 = new Location("d3");
-        public static Location d4 = new Location("d4");
+        public static Location a1 = new Location();
+        public static Location a2 = new Location();
+        public static Location a3 = new Location();
+        public static Location a4 = new Location();
+        public static Location b1 = new Location();
+        public static Location b2 = new Location();
+        public static Location b3 = new Location();
+        public static Location b4 = new Location();
+        public static Location c1 = new Location();
+        public static Location c2 = new Location();
+        public static Location c3 = new Location();
+        public static Location c4 = new Location();
+        public static Location d1 = new Location();
+        public static Location d2 = new Location();
+        public static Location d3 = new Location();
+        public static Location d4 = new Location();
         // Population of Locations
         public static void PopulateLocation()
         {
@@ -73,7 +67,10 @@ namespace bordertale
                 b1,
                 null,
                 a2,
-                "A Seller in the Market says: \"I used to go fishing at the beach, but now theres monsters nearby!\"");
+                "A Seller in the Market says: \"I used to go fishing at the beach, but now theres monsters nearby!\"",
+                () => { 
+                    Console.WriteLine($"my name is {MainGame.player.name}");
+                });
             a2.Populate(
                 "Town Entrance",
                 "This is an entrance to your Town.",

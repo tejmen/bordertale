@@ -92,6 +92,14 @@ namespace bordertale.Entities
             PrintUtils.LeftPadHash(this.location.dialogue,length);
             PrintUtils.GetHash(length);
         }
+
+        public void Act()
+        {
+            if (this.location.act != null)
+            {
+                this.location.act();
+            }
+        }
         public string name;
         public Job job;
         public int heal;

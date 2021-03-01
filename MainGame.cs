@@ -91,7 +91,7 @@ namespace bordertale
                         break;
                     case "act":
                         inLoop = false;
-                        // @todo add Player.Act()
+                        player.Act();
                         break;
                     case "talk":
                         inLoop = false;
