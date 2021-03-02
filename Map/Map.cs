@@ -7,7 +7,7 @@ namespace bordertale
     {
         public void Populate(string zoneName, string description, string examination,
             Location up, Location down, Location left, Location right,
-            string dialogue = "Theres nobody to talk to here...",
+            string dialogue = "There's nobody to talk to here...",
             bool solved = false)
         {
             this.zoneName = zoneName;

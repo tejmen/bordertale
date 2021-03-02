@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace bordertale.Entities
 {
@@ -67,6 +68,21 @@ namespace bordertale.Entities
                 default:
                     Console.WriteLine("You have either reached the end of the map, or typed your command in wrong.");
                     break;
+            }
+        }
+
+        public void Move(bool tp, string location)
+        {
+            try
+            {
+                Type map = typeof(Map);
+                FieldInfo destlocation = map.GetField(location);
+                Location destination = (Location) destlocation.GetValue(null);
+                this.SetLocation(destination);
+            }
+            catch (NullReferenceException e)
+            {
+                System.Diagnostics.Debug.WriteLine($"The field could not be found: {e}");
             }
         }
 
