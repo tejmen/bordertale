@@ -73,12 +73,16 @@ namespace bordertale.Entities
 
         public void Move(bool tp, string location)
         {
-            if (tp == true)
+            try
             {
                 Type map = typeof(Map);
                 FieldInfo destlocation = map.GetField(location);
                 Location destination = (Location) destlocation.GetValue(null);
                 this.SetLocation(destination);
+            }
+            catch (NullReferenceException e)
+            {
+                System.Diagnostics.Debug.WriteLine($"The field could not be found: {e}");
             }
         }
 
