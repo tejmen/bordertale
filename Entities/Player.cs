@@ -99,6 +99,13 @@ namespace bordertale.Entities
             {
                 this.location.act();
             }
+            else
+            {
+                if (this.location.act == null)
+                {
+                    Console.WriteLine("There's nothing to do here!");
+                }
+            }
         }
         public string name;
         public Job job;
