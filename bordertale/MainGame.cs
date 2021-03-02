@@ -1,4 +1,4 @@
-﻿using bordertale.Entities;
+using bordertale.Entities;
 using System;
 using System.Threading;
 
@@ -91,7 +91,7 @@ namespace bordertale
                         break;
                     case "act":
                         inLoop = false;
-                        // @todo add Player.Act()
+                        player.Act();
                         break;
                     case "talk":
                         inLoop = false;

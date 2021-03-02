@@ -1,5 +1,8 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Reflection;
+using System;
+using bordertale.Entities;
 
 namespace bordertale
 {
@@ -7,8 +10,8 @@ namespace bordertale
     {
         public void Populate(string zoneName, string description, string examination,
             Location up, Location down, Location left, Location right,
-            string dialogue = "There's nobody to talk to here...",
-            bool solved = false)
+            string dialogue = "Theres nobody to talk to here...",
+            Action action = null, bool solved = false)
         {
             this.zoneName = zoneName;
             this.description = description;
@@ -19,6 +22,7 @@ namespace bordertale
             this.down = down;
             this.left = left;
             this.right = right;
+            this.act = action;
         }
         public string zoneName;
         public string description;
@@ -29,6 +33,7 @@ namespace bordertale
         public Location left;
         public Location right;
         public string dialogue;
+        public Action act;
     }
 
     public static class Map
@@ -61,7 +66,10 @@ namespace bordertale
                 b1,
                 null,
                 a2,
-                "A Seller in the Market says: \"I used to go fishing at the beach, but now theres monsters nearby!\"");
+                "A Seller in the Market says: \"I used to go fishing at the beach, but now theres monsters nearby!\"",
+                () => { 
+                    Console.WriteLine($"my name is {MainGame.player.name}");
+                });
             a2.Populate(
                 "Town Entrance",
                 "This is an entrance to your Town.",
@@ -188,5 +196,6 @@ namespace bordertale
                 d3,
                 null);
         }
+        // Creation of Actions
     }
 }
