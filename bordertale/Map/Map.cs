@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Reflection;
 using System;
@@ -33,7 +33,6 @@ namespace bordertale
         public Location left;
         public Location right;
         public string dialogue;
-
         public Action act;
     }
 

@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Reflection;
 
 namespace bordertale.Entities
 {
@@ -70,6 +71,21 @@ namespace bordertale.Entities
             }
         }
 
+        public void Move(bool tp, string location)
+        {
+            try
+            {
+                Type map = typeof(Map);
+                FieldInfo destlocation = map.GetField(location);
+                Location destination = (Location) destlocation.GetValue(null);
+                this.SetLocation(destination);
+            }
+            catch (NullReferenceException e)
+            {
+                System.Diagnostics.Debug.WriteLine($"The field could not be found: {e}");
+            }
+        }
+
         public void SetLocation(Location destination)
         {
             Console.WriteLine($"\nYou have moved to {destination.zoneName}.");
@@ -93,6 +109,7 @@ namespace bordertale.Entities
             PrintUtils.GetHash(length);
         }
 
+
         public void Act()
         {
             if (this.location.act != null)
@@ -107,6 +124,7 @@ namespace bordertale.Entities
                 }
             }
         }
+
         public string name;
         public Job job;
         public int heal;

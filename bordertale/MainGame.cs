@@ -1,4 +1,4 @@
-﻿using bordertale.Entities;
+using bordertale.Entities;
 using System;
 using System.Threading;
 
@@ -120,10 +120,15 @@ namespace bordertale
                         break;
                     case "move":
                         inLoop = false;
-                        if (words.Length > 1)
+                        if (words.Length <= 1)
                         {
                             string direction = words[1];
                             player.Move(direction);
+                        }
+                        else if (words.Length == 3 & words[1] == "tp")
+                        {
+                            string destination = words[2];
+                            player.Move(true, destination);
                         }
                         break;
                     default:
