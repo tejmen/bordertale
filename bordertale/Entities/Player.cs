@@ -23,6 +23,7 @@ namespace bordertale.Entities
             this.hp = this.job.max;
             this.max = this.job.max;
             this.heal = this.job.heal;
+            this.ap = this.job.ap;
         }
         public void PrintLocation()
         {
