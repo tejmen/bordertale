@@ -124,6 +124,10 @@ namespace bordertale.Entities
                 }
             }
         }
+        public void Pay(int amount)
+        {
+            this.money += amount;
+        }
 
         public string name;
         public Job job;

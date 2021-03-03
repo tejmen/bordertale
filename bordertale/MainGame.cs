@@ -79,11 +79,7 @@ namespace bordertale
                 {
                     case "quit":
                         inLoop = false;
-                        PrintUtils.GetHash(15);
-                        PrintUtils.CenterPadHash("GOODBYE!!", 15);
-                        PrintUtils.GetHash(15);
-                        Thread.Sleep(500);
-                        Environment.Exit(0);
+                        EndGame();
                         break;
                     case "look":
                         inLoop = false;
@@ -136,6 +132,15 @@ namespace bordertale
                         break;
                 }
             }
+        }
+
+        public static void EndGame()
+        {
+            PrintUtils.GetHash(15);
+            PrintUtils.CenterPadHash("GOODBYE!!", 15);
+            PrintUtils.GetHash(15);
+            Thread.Sleep(500);
+            Environment.Exit(0);
         }
     }
 }
