@@ -254,7 +254,7 @@ namespace bordertale
                 d2,
                 action: () =>
                 {
-                    Console.WriteLine("The beach is too rocky to do anything.")
+                    Console.WriteLine("The beach is too rocky to do anything.");
                 });
             d2.Populate(
                 "Beach",
