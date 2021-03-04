@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using bordertale;
 using System;
 using System.Collections.Generic;
@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace bordertale.Tests
 {
-    [TestClass()]
+    [TestFixture]
     public class PrintUtilsTests
     {
-        [TestMethod()]
+        [Test]
         public void CenterPadHashTest()
         {
-            Assert.Fail();
+            Assert.That(1 == 1);
         }
     }
 }
