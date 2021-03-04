@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 
 namespace bordertale.Entities
@@ -108,6 +108,27 @@ namespace bordertale.Entities
             PrintUtils.LeftPadHash(this.location.dialogue,length);
             PrintUtils.GetHash(length);
         }
+
+
+        public void Act()
+        {
+            if (this.location.act != null)
+            {
+                this.location.act();
+            }
+            else
+            {
+                if (this.location.act == null)
+                {
+                    Console.WriteLine("There's nothing to do here!");
+                }
+            }
+        }
+        public void Pay(int amount)
+        {
+            this.money += amount;
+        }
+
         public string name;
         public Job job;
         public int heal;
