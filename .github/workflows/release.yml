@@ -59,12 +59,12 @@ jobs:
       id: zip_file
       run: |
         ls release
-        zip bordertale-windows-${{ github.ref }}.zip /home/runner/work/bordertale/bordertale/release
+        zip bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip /home/runner/work/bordertale/bordertale/release
     - name: Create Release and Upload Assets
       id: create-release
       uses: softprops/action-gh-release@v0.1.5
       with:
-         name: Release ${{ github.ref }}
+         name: Release ${{ steps.get_version.outputs.VERSION }}
          files: release.zip
          body_path: CHANGELOG.txt
          draft: true
@@ -88,7 +88,7 @@ jobs:
       id: zip_file
       run: |
         ls release
-        zip bordertale-windows-${{ github.ref }}.zip /home/runner/work/bordertale/bordertale/release
+        zip bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip /home/runner/work/bordertale/bordertale/release
     - name: Push with Butler
       id: butler
       uses: josephbmanley/butler-publish-itchio-action@master
