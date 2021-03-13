@@ -22,7 +22,9 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: |
+        dotnet build
+        dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish /home/runner/work/bordertale/bordertale/bordertale -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
     - name: Upload a Build Artifact
