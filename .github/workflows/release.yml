@@ -89,6 +89,10 @@ jobs:
       run: |
         ls release
         zip bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip /home/runner/work/bordertale/bordertale/release
+    - name: Print directory
+      run: |
+        pwd
+        ls -l
     - name: Push with Butler
       id: butler
       uses: josephbmanley/butler-publish-itchio-action@master
