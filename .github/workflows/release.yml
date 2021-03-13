@@ -35,7 +35,7 @@ jobs:
         dotnet build
         dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
+      run: dotnet publish /home/runner/work/bordertale/bordertale/bordertale -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
