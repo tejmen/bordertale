@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace bordertale
 {
-    class PrintUtils
+    public class PrintUtils
     {
         public static void CenterPadHash(string text, int length)
         {
