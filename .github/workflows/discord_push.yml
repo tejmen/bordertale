@@ -1,9 +1,0 @@
-on:
-  push:
-    branches:
-      - '**'
-
-name: Discord Notification
-
-jobs:
-
