@@ -67,7 +67,7 @@ jobs:
       uses: softprops/action-gh-release@v0.1.5
       with:
          name: Release ${{ steps.get_version.outputs.VERSION }}
-         files: release.zip
+         files: bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip
          body_path: CHANGELOG.txt
          draft: true
          prerelease: true
@@ -101,5 +101,5 @@ jobs:
           CHANNEL: windows-beta
           ITCH_GAME: bordertale
           ITCH_USER: tejmen
-          PACKAGE: bordertale-windows-${{ github.ref }}.zip
-          VERSION: ${{ github.ref }}
+          PACKAGE: bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
