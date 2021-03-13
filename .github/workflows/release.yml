@@ -47,6 +47,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
     - name: Get the version
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
@@ -60,10 +62,6 @@ jobs:
       run: |
         ls release
         zip bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip /home/runner/work/bordertale/bordertale/release
-    - name: Print directory
-      run: |
-        pwd
-        ls -l
     - name: Create Release and Upload Assets
       id: create-release
       uses: softprops/action-gh-release@v0.1.5
@@ -80,6 +78,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build, create_release]
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
     - name: Get the version
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
