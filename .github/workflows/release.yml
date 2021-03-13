@@ -69,8 +69,8 @@ jobs:
          name: Release ${{ steps.get_version.outputs.VERSION }}
          files: bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip
          body_path: CHANGELOG.txt
-         draft: true
-         prerelease: true
+         draft: false
+         prerelease: false
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   butler_push:
