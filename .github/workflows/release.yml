@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: release
-        path: /home/runner/work/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
+        path: /home/runner/work/bordertale/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
 
   create_release:
     name: Create Release
