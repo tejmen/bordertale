@@ -14,7 +14,7 @@ namespace bordertale
             if (player.name == "dev")
             {
                 player.name = "Developer";
-                player.job = new Job("Fighter", 120, 40);
+                player.job = new Articles.Job("Fighter", 120, 40);
                 player.SetJob();
                 Map.PopulateLocation();
                 MainGameLoop();
@@ -29,15 +29,15 @@ namespace bordertale
                 {
                     case "fighter":
                         inLoop = false;
-                        player.job = new Job("Fighter", 120, 40);
+                        player.job = new Articles.Job("Fighter", 120, 40);
                         break;
                     case "wizard":
                         inLoop = false;
-                        player.job = new Job("Healer", 200, 20, 40);
+                        player.job = new Articles.Job("Healer", 200, 20, 40);
                         break;
                     case "healer":
                         inLoop = false;
-                        player.job = new Job("Wizard", 300, 20, 20);
+                        player.job = new Articles.Job("Wizard", 300, 20, 20);
                         break;
                     default:
                         Console.WriteLine("Please enter a valid role.");

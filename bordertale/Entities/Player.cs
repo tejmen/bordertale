@@ -130,7 +130,7 @@ namespace bordertale.Entities
         }
 
         public string name;
-        public Job job;
+        public Articles.Job job;
         public int heal;
         public Location location;
         // @todo Add Effects Class
