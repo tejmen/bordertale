@@ -1,4 +1,6 @@
+using bordertale.Articles;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace bordertale.Entities
@@ -130,14 +132,14 @@ namespace bordertale.Entities
         }
 
         public string name;
-        public Articles.Job job;
+        public Job job;
         public int heal;
         public Location location;
         // @todo Add Effects Class
         // @todo Add Armour Class
         // @todo Add Shield Class
         public bool dead;
-        // @todo Add Item Class
+        public List<Item> inventory;
         // @todo Add Weapons Class
         // @todo Add Missions Class
     }
