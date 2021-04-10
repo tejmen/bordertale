@@ -21,9 +21,9 @@ namespace bordertale.Entities
             this.money = money;
         }
     }
-    public class Mobs
+    public static class Mobs
     {
-        public Mob GreenSlime = new Mob(PrintUtils.GetHashReturn(42)
+        public static Mob GreenSlime = new Mob(PrintUtils.GetHashReturn(42)
                                                + "\n"
                                                + PrintUtils.CenterPadHashReturn("A Green Slime appeared out of the dark.", 42)
                                                + "\n"
@@ -51,7 +51,7 @@ namespace bordertale.Entities
                                                + "\n"
                                                + PrintUtils.GetHashReturn(36),
                                                300, 40, 100, 10);
-        public Mob Zombie = new Mob(PrintUtils.GetHashReturn(37)
+        public static Mob Zombie = new Mob(PrintUtils.GetHashReturn(37)
                                        + "\n"
                                        + PrintUtils.CenterPadHashReturn("A Zombie appeared out of the dark.", 37)
                                        + "\n"
@@ -79,7 +79,7 @@ namespace bordertale.Entities
                                        + "\n"
                                        + PrintUtils.GetHashReturn(36),
                                        500, 60, 500, 25);
-        public Mob Skeleton = new Mob(PrintUtils.GetHashReturn(39)
+        public static Mob Skeleton = new Mob(PrintUtils.GetHashReturn(39)
                                        + "\n"
                                        + PrintUtils.CenterPadHashReturn("A Skeleton appeared out of the dark.", 39)
                                        + "\n"
@@ -107,7 +107,7 @@ namespace bordertale.Entities
                                        + "\n"
                                        + PrintUtils.GetHashReturn(36),
                                        500, 60, 300, 25);
-        public Mob Spider = new Mob(PrintUtils.GetHashReturn(39)
+        public static Mob Spider = new Mob(PrintUtils.GetHashReturn(39)
                                + "\n"
                                + PrintUtils.CenterPadHashReturn("A Spider appeared out of the dark.", 39)
                                + "\n"
@@ -136,7 +136,7 @@ namespace bordertale.Entities
                                + PrintUtils.GetHashReturn(36),
                                600, 10, 500, 40); //@todo Add effects to spider
 
-        public Mob PickRandom()
+        public static Mob PickRandom()
         {
             Mob[] mobs = {GreenSlime, Zombie, Skeleton, Spider};
             int index = new Random().Next(mobs.Length);

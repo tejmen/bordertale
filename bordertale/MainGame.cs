@@ -9,6 +9,7 @@ namespace bordertale
         public static Player player = new Player();
         public static void StartGame()
         {
+            Console.WriteLine(Mobs.PickRandom().name);
             PrintUtils.SlowPrint("What is your name young traveller?");
             player.name = PrintUtils.Input();
             if (player.name == "dev")
