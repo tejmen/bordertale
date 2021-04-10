@@ -1,4 +1,5 @@
-﻿namespace bordertale.Entities
+﻿using System;
+namespace bordertale.Entities
 {
     public class Mob : Entity
     {
@@ -134,5 +135,12 @@
                                + "\n"
                                + PrintUtils.GetHashReturn(36),
                                600, 10, 500, 40); //@todo Add effects to spider
+
+        public Mob PickRandom()
+        {
+            Mob[] mobs = {GreenSlime, Zombie, Skeleton, Spider};
+            int index = new Random().Next(mobs.Length);
+            return mobs[index];
+        }
     }
 }
