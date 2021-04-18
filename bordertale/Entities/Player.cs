@@ -1,6 +1,7 @@
 using bordertale.Articles;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace bordertale.Entities
@@ -20,12 +21,14 @@ namespace bordertale.Entities
             this.money = 0;
             this.location = Map.b2;
         }
+
         public void SetJob()
         {
             this.hp = this.job.max;
             this.max = this.job.max;
             this.heal = this.job.heal;
         }
+
         public void PrintLocation()
         {
             System.Console.WriteLine("");
@@ -35,6 +38,7 @@ namespace bordertale.Entities
             PrintUtils.LeftPadHash(this.location.description, length);
             PrintUtils.GetHash(length);
         }
+
         public void Move(string direction)
         {
             switch (direction)
@@ -111,7 +115,6 @@ namespace bordertale.Entities
             PrintUtils.GetHash(length);
         }
 
-
         public void Act()
         {
             if (this.location.act != null)
@@ -126,9 +129,36 @@ namespace bordertale.Entities
                 }
             }
         }
+
         public void Pay(int amount)
         {
             this.money += amount;
+        }
+
+        public void Acquire(Item item)
+        {
+            this.inventory.Append(item);
+        }
+
+        public void Remove(Item item)
+        {
+            this.inventory.Remove(item);
+        }
+
+        public void Equip(DegradableItem item)
+        {
+            if (item is Armour)
+            {
+                // @todo Add Check for already equipped armouor and remove if necessary
+                this.Remove(item);
+                this.armour.Append(item); // This won't work
+            }
+            else if (item is Weapon)
+            {
+                this.Remove(item);
+                this.Acquire(this.weapon);
+                this.weapon = (Weapon) item;
+            }
         }
 
         public string name;
@@ -136,11 +166,11 @@ namespace bordertale.Entities
         public int heal;
         public Location location;
         // @todo Add Effects Class
-        // @todo Add Armour Class
-        // @todo Add Shield Class
+        public List<Armour> armour;
+        public Shield shield;
         public bool dead;
         public List<Item> inventory;
-        // @todo Add Weapons Class
+        public Weapon weapon;
         // @todo Add Missions Class
     }
 }
