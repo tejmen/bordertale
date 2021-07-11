@@ -1,2 +1,2 @@
 # Bordertale
-![.NET](https://github.com/tejmen/bordertale/workflows/.NET/badge.svg)
+![.NET](https://github.com/tejmen/bordertale/workflows/.NET/badge.svg) ![GitHub](https://img.shields.io/github/license/tejmen/bordertale) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/tejmen/bordertale?include_prereleases) ![GitHub last commit](https://img.shields.io/github/last-commit/tejmen/bordertale) ![Framework](https://img.shields.io/badge/Framework-.NET%205.0-informational) ![Language](https://img.shields.io/badge/Language-C%23-informational)

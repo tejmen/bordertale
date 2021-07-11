@@ -1,4 +1,4 @@
-name: .NET
+name: .NET Build, Test, Publish, and Notify
 
 on:
   push:
@@ -32,3 +32,15 @@ jobs:
       with:
         name: latest
         path: /home/runner/work/bordertale/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
+
+  notify:
+    name: Discord Notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Discord Notifier
+        uses: fateyan/action-discord-notifier@v1.2.0
+        with:
+          message-title: New Commits Pushed
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
