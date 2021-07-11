@@ -11,7 +11,7 @@ namespace bordertale.Helpers
     {
         public static Item CreateItem(string itemName)
         {
-            switch (itemName)
+            switch (itemName.Trim().ToLower())
             {
                 case "shield":
                     return new Shield("shield", "Sturdy Shield", 35, 100, 75);
@@ -21,6 +21,8 @@ namespace bordertale.Helpers
                     return new Armour("chestplate", "Iron Chestplate", 40, 100, 20);
                 case "knife":
                     return new Weapon("knife", "Knife", 50, 100, 80);
+                case "sword":
+                    return new Weapon("sword", "Soldier's Broadsword", 100, 150, 100);
                 default:
                     return null;
             }

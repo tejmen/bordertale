@@ -1,4 +1,6 @@
+using bordertale.Articles;
 using bordertale.Entities;
+using bordertale.Helpers;
 using System;
 using System.Threading;
 
@@ -29,15 +31,15 @@ namespace bordertale
                 {
                     case "fighter":
                         inLoop = false;
-                        player.job = new Articles.Job("Fighter", 120, 40);
+                        player.job = JobFactory.CreateJob("fighter");
                         break;
                     case "wizard":
                         inLoop = false;
-                        player.job = new Articles.Job("Healer", 200, 20, 40);
+                        player.job = JobFactory.CreateJob("wizard");
                         break;
                     case "healer":
                         inLoop = false;
-                        player.job = new Articles.Job("Wizard", 300, 20, 20);
+                        player.job = JobFactory.CreateJob("healer");
                         break;
                     default:
                         Console.WriteLine("Please enter a valid role.");

@@ -21,5 +21,15 @@ namespace bordertale.Entities.Tests
             player.Equip(helmet);
             Assert.IsFalse(player.inventory.Any());
         }
+
+        [Test()]
+        public void ItemEquipTest()
+        {
+            Player player = new();
+            Weapon weapon = new("weapon", "Test Weapon", 200, 200, 200);
+            player.Acquire(weapon);
+            player.Equip(weapon);
+            Assert.IsFalse(player.inventory.Any());
+        }
     }
 }

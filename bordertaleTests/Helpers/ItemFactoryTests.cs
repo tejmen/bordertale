@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using bordertale.Articles;
 
 namespace bordertale.Helpers.Tests
 {
@@ -14,7 +15,16 @@ namespace bordertale.Helpers.Tests
         [TestMethod()]
         public void CreateItemTest()
         {
-            throw new NotImplementedException();
+            Weapon sword = (Weapon)ItemFactory.CreateItem("sword");
+            Assert.AreEqual(sword.title, "sword");
+            Weapon knife = (Weapon)ItemFactory.CreateItem("knife");
+            Assert.AreEqual(knife.title, "knife");
+            Shield shield = (Shield)ItemFactory.CreateItem("shield");
+            Assert.AreEqual(shield.title, "shield");
+            Armour chestplate = (Armour)ItemFactory.CreateItem("chestplate");
+            Assert.AreEqual(chestplate.title, "chestplate");
+            Armour helmet = (Armour)ItemFactory.CreateItem("helmet");
+            Assert.AreEqual(helmet.title, "helmet");
         }
     }
 }

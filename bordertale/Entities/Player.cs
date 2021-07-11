@@ -141,7 +141,10 @@ namespace bordertale.Entities
 
         public void Acquire(Item item)
         {
-            this.inventory.Add(item);
+            if (item != null)
+            {
+                this.inventory.Add(item);
+            }
         }
 
         public void Remove(Item item)
