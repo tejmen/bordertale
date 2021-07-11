@@ -1,5 +1,10 @@
+using System.Diagnostics;
+using bordertale.Articles;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using bordertale.Helpers;
 
 namespace bordertale.Entities
 {
@@ -17,13 +22,17 @@ namespace bordertale.Entities
             this.dead = false;
             this.money = 0;
             this.location = Map.b2;
+            this.inventory = new List<Item>();
+            this.weapon = null;
         }
+
         public void SetJob()
         {
             this.hp = this.job.max;
             this.max = this.job.max;
             this.heal = this.job.heal;
         }
+
         public void PrintLocation()
         {
             System.Console.WriteLine("");
@@ -33,6 +42,7 @@ namespace bordertale.Entities
             PrintUtils.LeftPadHash(this.location.description, length);
             PrintUtils.GetHash(length);
         }
+
         public void Move(string direction)
         {
             switch (direction)
@@ -77,7 +87,7 @@ namespace bordertale.Entities
             {
                 Type map = typeof(Map);
                 FieldInfo destlocation = map.GetField(location);
-                Location destination = (Location) destlocation.GetValue(null);
+                Location destination = (Location)destlocation.GetValue(null);
                 this.SetLocation(destination);
             }
             catch (NullReferenceException e)
@@ -97,7 +107,7 @@ namespace bordertale.Entities
         {
             int length = 4 + this.location.examination.Length;
             PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(this.location.examination,length);
+            PrintUtils.LeftPadHash(this.location.examination, length);
             PrintUtils.GetHash(length);
         }
 
@@ -105,10 +115,9 @@ namespace bordertale.Entities
         {
             int length = 4 + this.location.dialogue.Length;
             PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(this.location.dialogue,length);
+            PrintUtils.LeftPadHash(this.location.dialogue, length);
             PrintUtils.GetHash(length);
         }
-
 
         public void Act()
         {
@@ -124,9 +133,54 @@ namespace bordertale.Entities
                 }
             }
         }
+
         public void Pay(int amount)
         {
             this.money += amount;
+        }
+
+        public void Acquire(Item item)
+        {
+            if (item != null)
+            {
+                this.inventory.Add(item);
+            }
+        }
+
+        public void Remove(Item item)
+        {
+            this.inventory.Remove(item);
+        }
+
+        public IEnumerable<Armour> RemoveArmour(Armour chosenItem)
+        {
+            var itemInList = this.inventory.Where(armourItem => armourItem == chosenItem);
+            this.inventory.RemoveAll(armourItem => armourItem == chosenItem);
+            return ArmourExtensions.ToList(itemInList);
+        }
+
+        public void Equip(DegradableItem item)
+        {
+            if (item is Armour)
+            {
+                // @todo Add Check for already equipped armour and remove if necessary
+                // this.Remove(item);
+                var itemsInList = this.RemoveArmour((Armour)item);
+                try
+                {
+                    this.armour.AddRange(itemsInList.ToList());
+                }
+                catch (NullReferenceException ex)
+                {
+                    return;
+                }
+            }
+            else if (item is Weapon)
+            {
+                this.Remove(item);
+                this.Acquire(this.weapon);
+                this.weapon = (Weapon)item;
+            }
         }
 
         public string name;
@@ -134,11 +188,11 @@ namespace bordertale.Entities
         public int heal;
         public Location location;
         // @todo Add Effects Class
-        // @todo Add Armour Class
-        // @todo Add Shield Class
+        public List<Armour> armour;
+        public Shield shield;
         public bool dead;
-        // @todo Add Item Class
-        // @todo Add Weapons Class
+        public List<Item> inventory;
+        public Weapon weapon;
         // @todo Add Missions Class
     }
 }

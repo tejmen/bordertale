@@ -1,4 +1,4 @@
-﻿namespace bordertale
+﻿namespace bordertale.Articles
 {
     public class Job
     {
