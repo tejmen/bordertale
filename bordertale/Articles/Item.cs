@@ -8,18 +8,14 @@ namespace bordertale.Articles
 {
     public class Item
     {
+        public Item(string title, string name, int price)
+        {
+            this.title = title;
+            this.name = name;
+            this.price = price;
+        }
         public string title;
         public string name;
         public int price;
-
-        public void Acquire()
-        {
-            MainGame.player.inventory.Append(this);
-        }
-        
-        public void Remove()
-        {
-            MainGame.player.inventory.Remove(this);
-        }
     }
 }
