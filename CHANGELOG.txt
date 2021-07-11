@@ -1,0 +1,6 @@
+# Beta 0.1!
+This release is the first *beta* release, and has basic functionality. So far, the game includes:
+ - **The map!**
+ - **Movement!**
+ - **Character Creation!**
+More is sure to come, checkout the [Bug Fixes and Features](https://github.com/tejmen/bordertale/projects/1) board on our GitHub Repo!

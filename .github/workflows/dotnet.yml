@@ -2,9 +2,9 @@ name: .NET Build, Test, Publish, and Notify
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev/*, release/* ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev/*, release/* ]
 
 jobs:
   build:
@@ -22,14 +22,16 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal --no-restore
+      run: |
+        dotnet build
+        dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
+      run: dotnet publish /home/runner/work/bordertale/bordertale/bordertale -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
         name: latest
-        path: /home/runner/work/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
+        path: /home/runner/work/bordertale/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
 
   notify:
     name: Discord Notification

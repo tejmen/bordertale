@@ -30,21 +30,29 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-   # - name: Test
-    #  run: dotnet test --no-build --verbosity normal --no-restore
+    - name: Test
+      run: |
+        dotnet build
+        dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
+      run: dotnet publish /home/runner/work/bordertale/bordertale/bordertale -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
         name: release
-        path: /home/runner/work/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
+        path: /home/runner/work/bordertale/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
 
   create_release:
     name: Create Release
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
     - name: Download Previous Build Artefact
       uses: actions/download-artifact@v2
       with:
@@ -54,16 +62,16 @@ jobs:
       id: zip_file
       run: |
         ls release
-        zip --junk-paths bordertale-windows-${{ github.ref }}.zip release
+        zip bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip /home/runner/work/bordertale/bordertale/release
     - name: Create Release and Upload Assets
       id: create-release
       uses: softprops/action-gh-release@v0.1.5
       with:
-         name: Release ${{ github.ref }}
-         files: release.zip
+         name: Release ${{ steps.get_version.outputs.VERSION }}
+         files: bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip
          body_path: CHANGELOG.txt
-         draft: true
-         prerelease: true
+         draft: false
+         prerelease: false
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   butler_push:
@@ -71,6 +79,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build, create_release]
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     - name: Download Previous Build Artefact
       uses: actions/download-artifact@v2
       with:
@@ -80,7 +93,7 @@ jobs:
       id: zip_file
       run: |
         ls release
-        zip --junk-paths bordertale-windows-${{ github.ref }}.zip release
+        zip bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip /home/runner/work/bordertale/bordertale/release
     - name: Push with Butler
       id: butler
       uses: josephbmanley/butler-publish-itchio-action@master
@@ -89,5 +102,5 @@ jobs:
           CHANNEL: windows-beta
           ITCH_GAME: bordertale
           ITCH_USER: tejmen
-          PACKAGE: bordertale-windows-${{ github.ref }}.zip
-          VERSION: ${{ github.ref }}
+          PACKAGE: bordertale-windows-${{ steps.get_version.outputs.VERSION }}.zip
+          VERSION: ${{ steps.get_version.outputs.VERSION }}

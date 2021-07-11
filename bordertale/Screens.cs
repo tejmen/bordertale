@@ -80,7 +80,7 @@ namespace bordertale
                         break;
                     case "resume":
                         inLoop = false;
-                        MainGame.MainGameLoop();
+                        // TODO Add ResumeGame() Functionality, ideally from a json object stored through a file.
                         break;
                     default:
                         Console.WriteLine("Please enter a valid command.");
