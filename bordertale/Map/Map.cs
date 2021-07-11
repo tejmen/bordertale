@@ -125,7 +125,7 @@ namespace bordertale
                 action: () =>
                 {
                     Console.WriteLine("You pick up the knife.");
-                    // @todo Add Inventory append
+                    MainGame.player.Acquire(Helpers.ItemFactory.CreateItem("knife"));
                 });
             b2.Populate(
                 "Home",
@@ -279,7 +279,7 @@ namespace bordertale
                 d2,
                 d4,
                 action: () =>
-                { 
+                {
                     // combat here too
                 });
             d4.Populate(

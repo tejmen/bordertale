@@ -9,7 +9,7 @@ namespace bordertale.Helpers
 {
     public static class ItemFactory
     {
-        public static Item FactoryMethod(string itemName)
+        public static Item CreateItem(string itemName)
         {
             switch (itemName)
             {
@@ -19,6 +19,8 @@ namespace bordertale.Helpers
                     return new Armour("helmet", "Iron Helmet", 30, 100, 10);
                 case "chestplate":
                     return new Armour("chestplate", "Iron Chestplate", 40, 100, 20);
+                case "knife":
+                    return new Weapon("knife", "Knife", 50, 100, 80);
                 default:
                     return null;
             }

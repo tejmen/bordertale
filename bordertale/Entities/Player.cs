@@ -1,8 +1,10 @@
+using System.Diagnostics;
 using bordertale.Articles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using bordertale.Helpers;
 
 namespace bordertale.Entities
 {
@@ -20,6 +22,8 @@ namespace bordertale.Entities
             this.dead = false;
             this.money = 0;
             this.location = Map.b2;
+            this.inventory = new List<Item>();
+            this.weapon = null;
         }
 
         public void SetJob()
@@ -83,7 +87,7 @@ namespace bordertale.Entities
             {
                 Type map = typeof(Map);
                 FieldInfo destlocation = map.GetField(location);
-                Location destination = (Location) destlocation.GetValue(null);
+                Location destination = (Location)destlocation.GetValue(null);
                 this.SetLocation(destination);
             }
             catch (NullReferenceException e)
@@ -103,7 +107,7 @@ namespace bordertale.Entities
         {
             int length = 4 + this.location.examination.Length;
             PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(this.location.examination,length);
+            PrintUtils.LeftPadHash(this.location.examination, length);
             PrintUtils.GetHash(length);
         }
 
@@ -111,7 +115,7 @@ namespace bordertale.Entities
         {
             int length = 4 + this.location.dialogue.Length;
             PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(this.location.dialogue,length);
+            PrintUtils.LeftPadHash(this.location.dialogue, length);
             PrintUtils.GetHash(length);
         }
 
@@ -137,7 +141,7 @@ namespace bordertale.Entities
 
         public void Acquire(Item item)
         {
-            this.inventory.Append(item);
+            this.inventory.Add(item);
         }
 
         public void Remove(Item item)
@@ -145,19 +149,34 @@ namespace bordertale.Entities
             this.inventory.Remove(item);
         }
 
+        public IEnumerable<Armour> RemoveArmour(Armour chosenItem)
+        {
+            var itemInList = this.inventory.Where(armourItem => armourItem == chosenItem);
+            this.inventory.RemoveAll(armourItem => armourItem == chosenItem);
+            return ArmourExtensions.ToList(itemInList);
+        }
+
         public void Equip(DegradableItem item)
         {
             if (item is Armour)
             {
-                // @todo Add Check for already equipped armouor and remove if necessary
-                this.Remove(item);
-                this.armour.Append(item); // This won't work
+                // @todo Add Check for already equipped armour and remove if necessary
+                // this.Remove(item);
+                var itemsInList = this.RemoveArmour((Armour)item);
+                try
+                {
+                    this.armour.AddRange(itemsInList.ToList());
+                }
+                catch (NullReferenceException ex)
+                {
+                    return;
+                }
             }
             else if (item is Weapon)
             {
                 this.Remove(item);
                 this.Acquire(this.weapon);
-                this.weapon = (Weapon) item;
+                this.weapon = (Weapon)item;
             }
         }
 

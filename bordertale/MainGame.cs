@@ -47,8 +47,8 @@ namespace bordertale
             player.SetJob();
             Map.PopulateLocation();
             PrintUtils.SlowPrint($"Welcome {player.name} the {player.job.name}.");
-            PrintUtils.SlowPrint("Welcome to this fanatasy world!", 30);
-            PrintUtils.SlowPrint("Just dont get lost...", 100);
+            PrintUtils.SlowPrint("Welcome to this fantasy world!", 30);
+            PrintUtils.SlowPrint("Just don't get lost...", 100);
             PrintUtils.SlowPrint("(Cough, Cough)", 20);
             PrintUtils.GetHash(28);
             PrintUtils.CenterPadHash("Let's Jump In!", 28);
@@ -83,7 +83,7 @@ namespace bordertale
                         break;
                     case "look":
                         inLoop = false;
-                        player.Examine();   
+                        player.Examine();
                         break;
                     case "act":
                         inLoop = false;
