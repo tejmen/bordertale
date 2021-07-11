@@ -30,8 +30,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal --no-restore
+   # - name: Test
+    #  run: dotnet test --no-build --verbosity normal --no-restore
     - name: Publish
       run: dotnet publish -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
     - name: Upload a Build Artifact
