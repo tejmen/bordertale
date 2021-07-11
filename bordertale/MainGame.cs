@@ -1,4 +1,6 @@
+using bordertale.Articles;
 using bordertale.Entities;
+using bordertale.Helpers;
 using System;
 using System.Threading;
 
@@ -14,7 +16,7 @@ namespace bordertale
             if (player.name == "dev")
             {
                 player.name = "Developer";
-                player.job = new Job("Fighter", 120, 40);
+                player.job = new Articles.Job("Fighter", 120, 40);
                 player.SetJob();
                 Map.PopulateLocation();
                 MainGameLoop();
@@ -29,15 +31,15 @@ namespace bordertale
                 {
                     case "fighter":
                         inLoop = false;
-                        player.job = new Job("Fighter", 120, 40);
+                        player.job = JobFactory.CreateJob("fighter");
                         break;
                     case "wizard":
                         inLoop = false;
-                        player.job = new Job("Healer", 200, 20, 40);
+                        player.job = JobFactory.CreateJob("wizard");
                         break;
                     case "healer":
                         inLoop = false;
-                        player.job = new Job("Wizard", 300, 20, 20);
+                        player.job = JobFactory.CreateJob("healer");
                         break;
                     default:
                         Console.WriteLine("Please enter a valid role.");
@@ -47,8 +49,8 @@ namespace bordertale
             player.SetJob();
             Map.PopulateLocation();
             PrintUtils.SlowPrint($"Welcome {player.name} the {player.job.name}.");
-            PrintUtils.SlowPrint("Welcome to this fanatasy world!", 30);
-            PrintUtils.SlowPrint("Just dont get lost...", 100);
+            PrintUtils.SlowPrint("Welcome to this fantasy world!", 30);
+            PrintUtils.SlowPrint("Just don't get lost...", 100);
             PrintUtils.SlowPrint("(Cough, Cough)", 20);
             PrintUtils.GetHash(28);
             PrintUtils.CenterPadHash("Let's Jump In!", 28);
@@ -83,7 +85,7 @@ namespace bordertale
                         break;
                     case "look":
                         inLoop = false;
-                        player.Examine();   
+                        player.Examine();
                         break;
                     case "act":
                         inLoop = false;

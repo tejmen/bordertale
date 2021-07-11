@@ -1,33 +1,35 @@
-﻿using bordertale.Entities;
+using NUnit.Framework;
+using bordertale.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
+using bordertale.Articles;
 
 namespace bordertale.Entities.Tests
 {
-    [TestFixture]
+    [TestFixture()]
     public class PlayerTests
     {
-        [Test]
-        public void SetJobTest()
+        [Test()]
+        public void EquipArmourTest()
         {
-            // Arrange
-            Player player = new Player();
-            Job job = new Job("Test", 200, 200, 200);
-            // Act
-            player.job = job;
-            player.SetJob();
-            // Assert
-            Assert.That(player.hp, Is.EqualTo(200));
-            // Could also Use
-            Assert.That(player.ap == 200);
-            // Or
-            Assert.That(player.heal.Equals(200));
-            // Or Assert.Equals(player.heal, 200);
+            Player player = new();
+            Armour helmet = new("helmet", "Iron Helmet", 20, 100, 20);
+            player.Acquire(helmet);
+            player.Equip(helmet);
+            Assert.IsFalse(player.inventory.Any());
+        }
 
+        [Test()]
+        public void ItemEquipTest()
+        {
+            Player player = new();
+            Weapon weapon = new("weapon", "Test Weapon", 200, 200, 200);
+            player.Acquire(weapon);
+            player.Equip(weapon);
+            Assert.IsFalse(player.inventory.Any());
         }
     }
 }
