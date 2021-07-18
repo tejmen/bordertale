@@ -153,35 +153,36 @@ namespace bordertale.Entities
             this.inventory.Remove(item);
         }
 
-        public IEnumerable<Armour> RemoveArmour(Armour chosenItem)
+        public IEnumerable<Armour> RemoveArmourFromInventory(Armour chosenItem)
         {
             var itemInList = this.inventory.Where(armourItem => armourItem == chosenItem);
             this.inventory.RemoveAll(armourItem => armourItem == chosenItem);
             return ArmourExtensions.ToList(itemInList);
         }
 
-        public void Equip(DegradableItem item)
+        public void Equip(Armour item)
         {
-            if (item is Armour)
+            // Removing already equipped armour
+            foreach (Armour armourItem in this.armour)
             {
-                // @todo Add Check for already equipped armour and remove if necessary
-                // this.Remove(item);
-                var itemsInList = this.RemoveArmour((Armour)item);
-                try
+                if (armourItem.armourType == item.armourType)
                 {
-                    this.armour.AddRange(itemsInList.ToList());
-                }
-                catch (NullReferenceException ex)
-                {
-                    return;
+                    this.Acquire(armourItem);
+                    this.armour.Remove(armourItem);
+                    this.armour.Add(item);
                 }
             }
-            else if (item is Weapon)
+            var itemsInList = this.RemoveArmourFromInventory((Armour)item);
+            try
             {
-                this.Remove(item);
-                this.Acquire(this.weapon);
-                this.weapon = (Weapon)item;
+                this.armour.AddRange(itemsInList.ToList());
             }
+        }
+        public void Equip(Weapon item)
+        {
+            this.Remove(item);
+            this.Acquire(this.weapon);
+            this.weapon = (Weapon)item;
         }
 
         public string name;
