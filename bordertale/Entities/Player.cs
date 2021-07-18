@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using bordertale.Helpers;
+using System.Security.Cryptography;
 
 namespace bordertale.Entities
 {
@@ -155,31 +156,43 @@ namespace bordertale.Entities
 
         public IEnumerable<Armour> RemoveArmourFromInventory(Armour chosenItem)
         {
-            var itemInList = this.inventory.Where(armourItem => armourItem == chosenItem);
+            var itemInList = ArmourExtensions.ToList(this.inventory.Where(armourItem => armourItem == chosenItem));
             this.inventory.RemoveAll(armourItem => armourItem == chosenItem);
-            return ArmourExtensions.ToList(itemInList);
+            return itemInList;
         }
 
         public void Equip(Armour item)
         {
             // Removing already equipped armour
-            foreach (Armour armourItem in this.armour)
+            if (this.armour != null)
             {
-                if (armourItem.armourType == item.armourType)
+                List<Armour> armourToRemove = new();
+                foreach (Armour armourItem in this.armour)
                 {
-                    this.Acquire(armourItem);
-                    this.armour.Remove(armourItem);
-                    this.armour.Add(item);
+                    if (armourItem.armourType == item.armourType)
+                    {
+                        this.Acquire(armourItem);
+                        armourToRemove.Add(armourItem);
+                    }
                 }
+                foreach (var armour in armourToRemove)
+                {
+                    this.armour.Remove(armour);
+                }
+                this.RemoveArmourFromInventory(item);
+                this.armour.Add(item);
             }
-            var itemsInList = this.RemoveArmourFromInventory((Armour)item);
-            try
+            else
             {
-                this.armour.AddRange(itemsInList.ToList());
-            }
-            catch (NullReferenceException ex)
-            {
-                return;
+                var itemsInList = this.RemoveArmourFromInventory((Armour)item);
+                if (this.armour == null) // Generate Armour If this is the first item to be equipped
+                {
+                    this.armour = new List<Armour>();
+                }
+                foreach (var armour in itemsInList)
+                {
+                    this.armour.Add(armour);
+                }
             }
         }
         public void Equip(Weapon item)
