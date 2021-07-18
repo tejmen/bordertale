@@ -2,9 +2,9 @@ name: .NET Build, Test, Publish, and Notify
 
 on:
   push:
-    branches: [ main, dev/*, release/* ]
+    branches: [ main, dev/*, release/*, develop ]
   pull_request:
-    branches: [ main, dev/*, release/* ]
+    branches: [ main, dev/*, release/*, develop ]
 
 jobs:
   build:
