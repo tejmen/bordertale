@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using bordertale.Helpers;
 using System;
 using System.Collections.Generic;
@@ -6,25 +6,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using bordertale.Articles;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace bordertale.Helpers.Tests
 {
-    [TestClass()]
+    [TestFixture()]
     public class ItemFactoryTests
     {
-        [TestMethod()]
-        public void CreateItemTest()
+        [TestCase("sword")]
+        [TestCase("knife")]
+        public void CreateWeaponTest(string name)
         {
-            Weapon sword = (Weapon)ItemFactory.CreateItem("sword");
-            Assert.AreEqual(sword.title, "sword");
-            Weapon knife = (Weapon)ItemFactory.CreateItem("knife");
-            Assert.AreEqual(knife.title, "knife");
-            Shield shield = (Shield)ItemFactory.CreateItem("shield");
-            Assert.AreEqual(shield.title, "shield");
-            Armour chestplate = (Armour)ItemFactory.CreateItem("chestplate");
-            Assert.AreEqual(chestplate.title, "chestplate");
-            Armour helmet = (Armour)ItemFactory.CreateItem("helmet");
-            Assert.AreEqual(helmet.title, "helmet");
+            Weapon weapon = (Weapon)ItemFactory.CreateItem(name);
+            Assert.That(weapon.title, Is.EqualTo(name));
+        }
+        [TestCase("shield")]
+        public void CreateShieldTest(string name)
+        {
+            Shield shield = (Shield)ItemFactory.CreateItem(name);
+            Assert.That(shield.title, Is.EqualTo(name));
+        }
+        [TestCase("chestplate")]
+        [TestCase("helmet")]
+        [TestCase("leggings")]
+        [TestCase("boots")]
+        public void CreateArmourTest(string name)
+        {
+            Armour armour = (Armour)ItemFactory.CreateItem(name);
+            Assert.That(armour.title, Is.EqualTo(name));
         }
     }
 }

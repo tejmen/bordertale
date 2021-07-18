@@ -19,6 +19,10 @@ namespace bordertale.Helpers
                     return new Armour("helmet", "Iron Helmet", 30, 100, 10);
                 case "chestplate":
                     return new Armour("chestplate", "Iron Chestplate", 40, 100, 20);
+                case "leggings":
+                    return new Armour("leggings", "Iron Leggings", 20, 100, 15);
+                case "boots":
+                    return new Armour("boots", "Iron Boots", 10, 100, 5);
                 case "knife":
                     return new Weapon("knife", "Knife", 50, 100, 80);
                 case "sword":
