@@ -177,6 +177,10 @@ namespace bordertale.Entities
             {
                 this.armour.AddRange(itemsInList.ToList());
             }
+            catch (NullReferenceException ex)
+            {
+                return;
+            }
         }
         public void Equip(Weapon item)
         {
