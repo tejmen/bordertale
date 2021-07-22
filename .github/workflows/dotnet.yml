@@ -38,8 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        if: ${{ github.event_name != 'pull_request' }}
         uses: actions/checkout@v2
       - name: Discord Notifier
+        if: ${{ github.event_name != 'pull_request' }}
         uses: fateyan/action-discord-notifier@v1.2.0
         with:
           message-title: New Commits Pushed
