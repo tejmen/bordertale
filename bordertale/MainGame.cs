@@ -118,7 +118,7 @@ namespace bordertale
                         break;
                     case "move":
                         inLoop = false;
-                        if (words.Length <= 1)
+                        if (words.Length <= 2)
                         {
                             string direction = words[1];
                             player.Move(direction);
