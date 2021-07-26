@@ -8,7 +8,7 @@ namespace bordertale
 {
     public class MainGame
     {
-        public static Player player = new Player();
+        public static Player player = new();
         public static void StartGame()
         {
             PrintUtils.SlowPrint("What is your name young traveller?");
@@ -19,6 +19,8 @@ namespace bordertale
                 player.job = new Articles.Job("Fighter", 120, 40);
                 player.SetJob();
                 Map.PopulateLocation();
+                // * Start Tab Autocompletion
+                ReadLine.AutoCompletionHandler = new AutoCompletionHandler();
                 MainGameLoop();
             }
             PrintUtils.SlowPrint($"What is will your role be {player.name}?");
@@ -55,10 +57,13 @@ namespace bordertale
             PrintUtils.GetHash(28);
             PrintUtils.CenterPadHash("Let's Jump In!", 28);
             PrintUtils.GetHash(28);
+            // * Start Tab Autocompletion
+            ReadLine.AutoCompletionHandler = new AutoCompletionHandler();
             MainGameLoop();
         }
         public static void MainGameLoop()
         {
+
             player.PrintLocation();
             while (!player.dead)
             {

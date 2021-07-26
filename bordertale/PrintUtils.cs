@@ -67,8 +67,9 @@ namespace bordertale
         }
         public static string Input(string prompt = ">")
         {
-            Console.Write($"{prompt} ");
-            String input = Console.ReadLine().Trim();
+            // Console.Write($"{prompt} ");
+            // String input = Console.ReadLine().Trim();
+            String input = ReadLine.Read($"{prompt} ");
             return input;
         }
     }
