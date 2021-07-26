@@ -50,6 +50,7 @@ namespace bordertale.Entities
             switch (direction)
             {
                 case "up":
+                case "north":
                     if (this.location.up != null)
                     {
                         Location destination = this.location.up;
@@ -57,6 +58,7 @@ namespace bordertale.Entities
                     }
                     break;
                 case "down":
+                case "south":
                     if (this.location.down != null)
                     {
                         Location destination = this.location.down;
@@ -64,6 +66,7 @@ namespace bordertale.Entities
                     }
                     break;
                 case "left":
+                case "west":
                     if (this.location.left != null)
                     {
                         Location destination = this.location.left;
@@ -71,6 +74,7 @@ namespace bordertale.Entities
                     }
                     break;
                 case "right":
+                case "east":
                     if (this.location.right != null)
                     {
                         Location destination = this.location.right;
@@ -94,7 +98,7 @@ namespace bordertale.Entities
             }
             catch (NullReferenceException e)
             {
-                System.Diagnostics.Debug.WriteLine($"The field could not be found: {e}");
+                System.Diagnostics.Debug.WriteLine($"The field could not be found:\n {e}");
             }
         }
 
