@@ -45,5 +45,43 @@ namespace bordertale.Entities.Tests
             player.Equip(helmetNew);
             Assert.That(player.inventory.Contains(helmetOld) && player.armour.Contains(helmetNew));
         }
+
+        [TestCase("north")]
+        [TestCase("south")]
+        [TestCase("east")]
+        [TestCase("west")]
+        [TestCase("up")]
+        [TestCase("down")]
+        [TestCase("right")]
+        [TestCase("left")]
+        public void MoveTest(string direction)
+        {
+            Player player = new();
+            Map.PopulateLocation();
+            Location newLoc = new();
+            switch (direction)
+            {
+                case "left":
+                case "west":
+                    newLoc = player.location.left;
+                    break;
+                case "right":
+                case "east":
+                    newLoc = player.location.right;
+                    break;
+                case "north":
+                case "up":
+                    newLoc = player.location.up;
+                    break;
+                case "down":
+                case "south":
+                    newLoc = player.location.down;
+                    break;
+                default:
+                    break;
+            }
+            player.Move(direction);
+            Assert.That(player.location.zoneName, Is.EqualTo(newLoc.zoneName));
+        }
     }
 }
