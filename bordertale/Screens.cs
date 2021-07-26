@@ -115,10 +115,24 @@ namespace bordertale
             PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp/1000)}.",len);
             PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len);
             PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len);
-            // @todo add rest of stats screen
             PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} of damage.", len);
-            PrintUtils.LeftPadHash($"Your Inventory contains: , end=", len);
-            PrintUtils.LeftPadHash($"You are wearing these pieces of armour: ', end=''", len);
+            String inventory = "Your Inventory contains: ";
+            if (MainGame.player.inventory != null)
+            {
+                foreach (var item in MainGame.player.inventory)
+                {
+                    inventory += item.name;
+                }
+            }
+            PrintUtils.LeftPadHash(inventory, len);
+            String armour = "You are wearing these pieces of armour: ";
+            if (MainGame.player.armour != null){
+                foreach (var item in MainGame.player.armour)
+                {
+                    armour += item.name;
+                }
+            }
+            PrintUtils.LeftPadHash(armour, len);
             PrintUtils.GetHash(len);
         }
     }
