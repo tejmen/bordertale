@@ -118,15 +118,19 @@ namespace bordertale
                         break;
                     case "move":
                         inLoop = false;
-                        if (words.Length <= 2)
+                        if (words.Length == 2)
                         {
                             string direction = words[1];
                             player.Move(direction);
                         }
-                        else if (words.Length == 3 & words[1] == "tp")
+                        else if (words.Length == 3 && words[1] == "tp")
                         {
                             string destination = words[2];
                             player.Move(true, destination);
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nPlease type where you want to go.");
                         }
                         break;
                     default:
