@@ -54,40 +54,37 @@ namespace bordertale
             while (inLoop)
             {
                 string option = PrintUtils.Input().ToLower();
-                if (option == "play")  {
-                    inLoop = false;
-                    MainGame.StartGame();
-                    break;
-                }
-                else if (option == "help")  {
-                    inLoop = false;
-                    HelpScreen(false);
-                    break;
-                }
-                else if (option == "quit") {
-                    inLoop = false;
-                    PrintUtils.GetHash(15);
-                    PrintUtils.CenterPadHash("GOODBYE!!", 15);
-                    PrintUtils.GetHash(15);
-                    Thread.Sleep(500);
-                    Environment.Exit(0);
-                    break;
-                }
-                else if (option == "acknowledgements") {
-                    inLoop = false;
-                    AcknowledgementsScreen();
-                    break;
-                }
-                else if (option == "resume") {
-                    inLoop = false;
-                    // TODO Add ResumeGame() Functionality, ideally from a json object stored through a file.
-                    break;
-                }
-                else {
-                    Console.WriteLine("Please enter a valid command.");
-                    break;
-                }     
+                switch (option)
+                {
+                    case "play":
+                        inLoop = false;
+                        MainGame.StartGame();
+                        break;
+                    case "help":
+                        inLoop = false;
+                        HelpScreen(false);
+                        break;
+                    case "quit":
+                        inLoop = false;
+                        PrintUtils.GetHash(15);
+                        PrintUtils.CenterPadHash("GOODBYE!!", 15);
+                        PrintUtils.GetHash(15);
+                        Thread.Sleep(500);
+                        Environment.Exit(0);
+                        break;
+                    case "acknowledgements":
+                        inLoop = false;
+                        AcknowledgementsScreen();
+                        break;
+                    case "resume":
+                        inLoop = false;
+                        // TODO Add ResumeGame() Functionality, ideally from a json object stored through a file.
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid command.");
+                        break;
 
+                }
             }
         }
 
