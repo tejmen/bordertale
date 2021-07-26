@@ -107,7 +107,7 @@ namespace bordertale
 
         public static void Stats()
         {
-            int len = 66;
+            int len = 71;
             PrintUtils.GetHash(len);
             PrintUtils.CenterPadHash("STATS", len);
             PrintUtils.LeftPadHash($"You are {MainGame.player.name} the {MainGame.player.job.name}. ", len);
@@ -116,9 +116,9 @@ namespace bordertale
             PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len);
             PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len);
             // @todo add rest of stats screen
-          //  PrintUtils.LeftPadHash($"Your current weapon, the {} does {} of damage.", len);
-          //  PrintUtils.LeftPadHash($"Your Inventory contains: , end=", len);
-          //  PrintUtils.LeftPadHash($"You are wearing these pieces of armour: ', end=''", len);
+            PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} of damage.", len);
+            PrintUtils.LeftPadHash($"Your Inventory contains: , end=", len);
+            PrintUtils.LeftPadHash($"You are wearing these pieces of armour: ', end=''", len);
             PrintUtils.GetHash(len);
         }
     }

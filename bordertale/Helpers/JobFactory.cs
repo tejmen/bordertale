@@ -14,11 +14,12 @@ namespace bordertale.Helpers
             switch (jobName.Trim().ToLower())
             {
                 case "fighter":
-                    return new Job("Fighter", 120, 40);
+                    return new Job("Fighter", 120, 40, (Weapon)ItemFactory.CreateItem("sword"));
                 case "wizard":
-                    return new Job("Wizard", 300, 20);
+                    return new Job("Wizard", 300, 20, (Weapon)ItemFactory.CreateItem("Knife"));
                 case "healer":
-                    return new Job("Healer", 200, 20, 40);
+                // TODO: Change Default Weapons
+                    return new Job("Healer", 200, 20, (Weapon)ItemFactory.CreateItem("Knife"), 40);
                 default:
                     return null;
             }
