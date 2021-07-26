@@ -8,6 +8,10 @@ namespace bordertale
 
         public static void HelpScreen(bool inGame)
         {
+            if (!inGame)
+            {
+                Console.Clear();
+            }
             int width = 31;
             PrintUtils.GetHash(width);
             PrintUtils.CenterPadHash("Help", width);
@@ -18,7 +22,7 @@ namespace bordertale
             PrintUtils.LeftPadHash("• Type 'look' to inspect", width);
             PrintUtils.LeftPadHash(" something", width);
             PrintUtils.LeftPadHash("• Type 'act' to do what you", width);
-            PrintUtils.LeftPadHash("can on your place", width);
+            PrintUtils.LeftPadHash(" can on your place", width);
             PrintUtils.LeftPadHash("• If you find a Dungeon,", width);
             PrintUtils.LeftPadHash(" please help to excavate it", width);
             PrintUtils.LeftPadHash("• Find more weapons hidden", width);
@@ -29,7 +33,6 @@ namespace bordertale
             PrintUtils.LeftPadHash(" extra protection.", width);
             PrintUtils.CenterPadHash("Copyright 2019 tejmen09", width);
             PrintUtils.GetHash(width);
-            Thread.Sleep(500);
             switch (inGame)
             {
                 case true:
@@ -43,12 +46,19 @@ namespace bordertale
         public static void TitleScreen()
         {
             int width = 28;
+            Console.WriteLine(" _______  _______  ______    ______   _______  ______    _______  _______  ___      _______ ");
+            Console.WriteLine("|  _    ||       ||    _ |  |      | |       ||    _ |  |       ||   _   ||   |    |       |");
+            Console.WriteLine("| |_|   ||   _   ||   | ||  |  _    ||    ___||   | ||  |_     _||  |_|  ||   |    |    ___|");
+            Console.WriteLine("|       ||  | |  ||   |_||_ | | |   ||   |___ |   |_||_   |   |  |       ||   |    |   |___ ");
+            Console.WriteLine("|  _   | |  |_|  ||    __  || |_|   ||    ___||    __  |  |   |  |       ||   |___ |    ___|");
+            Console.WriteLine("| |_|   ||       ||   |  | ||       ||   |___ |   |  | |  |   |  |   _   ||       ||   |___ ");
+            Console.WriteLine("|_______||_______||___|  |_||______| |_______||___|  |_|  |___|  |__| |__||_______||_______|\n");
             PrintUtils.GetHash(width);
             PrintUtils.CenterPadHash("Welcome to Bordertale!", width);
             PrintUtils.CenterPadHash("- Play -", width);
             PrintUtils.CenterPadHash("- Resume -", width);
             PrintUtils.CenterPadHash("- Help -", width);
-            PrintUtils.CenterPadHash("- Acknoledgements -", width);
+            PrintUtils.CenterPadHash("- Acknowledgements -", width);
             PrintUtils.CenterPadHash("- Quit -", width);
             PrintUtils.CenterPadHash("Copyright 2021 tejmen09", width);
             PrintUtils.GetHash(width);
@@ -92,6 +102,7 @@ namespace bordertale
 
         private static void AcknowledgementsScreen()
         {
+            Console.Clear();
             PrintUtils.GetHash(31);
             PrintUtils.CenterPadHash("Acknowledgements", 31);
             PrintUtils.CenterPadHash("Beta Tested by:", 31);
