@@ -16,7 +16,7 @@ namespace bordertale
             if (player.name == "dev")
             {
                 player.name = "Developer";
-                player.job = new Articles.Job("Fighter", 120, 40);
+                player.job = new Articles.Job("Fighter", 120, 40, (Weapon)ItemFactory.CreateItem("sword"));
                 player.SetJob();
                 Map.PopulateLocation();
                 MainGameLoop();
