@@ -3,6 +3,7 @@ using bordertale.Entities;
 using bordertale.Helpers;
 using System;
 using System.Threading;
+using System.Linq;
 
 namespace bordertale
 {
@@ -102,7 +103,19 @@ namespace bordertale
                         break;
                     case "equip":
                         inLoop = false;
-                        // @todo add Player.Equip()
+                        switch (player.inventory.FirstOrDefault(item => item.title == words[1]).GetType().ToString())
+                        {
+                            case "Weapon":
+                                player.Equip((Weapon) player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
+                                break;
+                            case "Armour":
+                                player.Equip((Armour) player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
+                                break;
+                            case "Shield":
+                                throw new NotImplementedException();
+                            default:
+                                break;
+                        }
                         break;
                     case "stats":
                         inLoop = false;
