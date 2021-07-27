@@ -57,6 +57,10 @@ namespace bordertale.Entities
                         Location destination = this.location.up;
                         this.SetLocation(destination);
                     }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
+                    }
                     break;
                 case "down":
                 case "south":
@@ -64,6 +68,10 @@ namespace bordertale.Entities
                     {
                         Location destination = this.location.down;
                         this.SetLocation(destination);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
                     }
                     break;
                 case "left":
@@ -73,6 +81,10 @@ namespace bordertale.Entities
                         Location destination = this.location.left;
                         this.SetLocation(destination);
                     }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
+                    }
                     break;
                 case "right":
                 case "east":
@@ -81,9 +93,13 @@ namespace bordertale.Entities
                         Location destination = this.location.right;
                         this.SetLocation(destination);
                     }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
+                    }
                     break;
                 default:
-                    Console.WriteLine("You have either reached the end of the map, or typed your command in wrong.");
+                    Console.WriteLine("You have typed your command in wrong.");
                     break;
             }
         }
