@@ -27,6 +27,11 @@ namespace bordertale.Entities
             this.weapon = null;
         }
 
+        internal void xpChange(int xp)
+        {
+            this.xp += xp;
+        }
+
         public void SetJob()
         {
             this.hp = this.job.max;
@@ -102,6 +107,11 @@ namespace bordertale.Entities
                     Console.WriteLine("You have typed your command in wrong.");
                     break;
             }
+        }
+
+        internal void Heal()
+        {
+            this.HpChange(this.heal);
         }
 
         public void Move(bool tp, string location)
