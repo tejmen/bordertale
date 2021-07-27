@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using bordertale.Helpers;
+using System.Security.Cryptography;
 
 namespace bordertale.Entities
 {
@@ -32,6 +33,7 @@ namespace bordertale.Entities
             this.max = this.job.max;
             this.heal = this.job.heal;
             this.ap = this.job.ap;
+            this.weapon = this.job.weapon;
         }
 
         public void PrintLocation()
@@ -49,6 +51,7 @@ namespace bordertale.Entities
             switch (direction)
             {
                 case "up":
+                case "north":
                     if (this.location.up != null)
                     {
                         Location destination = this.location.up;
@@ -56,6 +59,7 @@ namespace bordertale.Entities
                     }
                     break;
                 case "down":
+                case "south":
                     if (this.location.down != null)
                     {
                         Location destination = this.location.down;
@@ -63,6 +67,7 @@ namespace bordertale.Entities
                     }
                     break;
                 case "left":
+                case "west":
                     if (this.location.left != null)
                     {
                         Location destination = this.location.left;
@@ -70,6 +75,7 @@ namespace bordertale.Entities
                     }
                     break;
                 case "right":
+                case "east":
                     if (this.location.right != null)
                     {
                         Location destination = this.location.right;
@@ -93,7 +99,7 @@ namespace bordertale.Entities
             }
             catch (NullReferenceException e)
             {
-                System.Diagnostics.Debug.WriteLine($"The field could not be found: {e}");
+                System.Diagnostics.Debug.WriteLine($"The field could not be found:\n {e}");
             }
         }
 
@@ -153,35 +159,52 @@ namespace bordertale.Entities
             this.inventory.Remove(item);
         }
 
-        public IEnumerable<Armour> RemoveArmour(Armour chosenItem)
+        public IEnumerable<Armour> RemoveArmourFromInventory(Armour chosenItem)
         {
-            var itemInList = this.inventory.Where(armourItem => armourItem == chosenItem);
+            var itemInList = ArmourExtensions.ToList(this.inventory.Where(armourItem => armourItem == chosenItem));
             this.inventory.RemoveAll(armourItem => armourItem == chosenItem);
-            return ArmourExtensions.ToList(itemInList);
+            return itemInList;
         }
 
-        public void Equip(DegradableItem item)
+        public void Equip(Armour item)
         {
-            if (item is Armour)
+            // Removing already equipped armour
+            if (this.armour != null)
             {
-                // @todo Add Check for already equipped armour and remove if necessary
-                // this.Remove(item);
-                var itemsInList = this.RemoveArmour((Armour)item);
-                try
+                List<Armour> armourToRemove = new();
+                foreach (Armour armourItem in this.armour)
                 {
-                    this.armour.AddRange(itemsInList.ToList());
+                    if (armourItem.armourType == item.armourType)
+                    {
+                        this.Acquire(armourItem);
+                        armourToRemove.Add(armourItem);
+                    }
                 }
-                catch (NullReferenceException ex)
+                foreach (var armour in armourToRemove)
                 {
-                    return;
+                    this.armour.Remove(armour);
+                }
+                this.RemoveArmourFromInventory(item);
+                this.armour.Add(item);
+            }
+            else
+            {
+                var itemsInList = this.RemoveArmourFromInventory((Armour)item);
+                if (this.armour == null) // Generate Armour If this is the first item to be equipped
+                {
+                    this.armour = new List<Armour>();
+                }
+                foreach (var armour in itemsInList)
+                {
+                    this.armour.Add(armour);
                 }
             }
-            else if (item is Weapon)
-            {
-                this.Remove(item);
-                this.Acquire(this.weapon);
-                this.weapon = (Weapon)item;
-            }
+        }
+        public void Equip(Weapon item)
+        {
+            this.Remove(item);
+            this.Acquire(this.weapon);
+            this.weapon = (Weapon)item;
         }
 
         public string name;

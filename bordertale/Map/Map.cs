@@ -52,6 +52,13 @@ namespace bordertale
         public static Location d2 = new Location();
         public static Location d3 = new Location();
         public static Location d4 = new Location();
+        public static Location GetLocation(string locationName)
+        {
+            var type = typeof(Map);
+            var locationField = type.GetField(locationName);
+            Location location = (Location)locationField.GetValue(null);
+            return location;
+        }
         // Population of Locations
         public static void PopulateLocation()
         {

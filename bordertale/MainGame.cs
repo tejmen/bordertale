@@ -8,7 +8,7 @@ namespace bordertale
 {
     public class MainGame
     {
-        public static Player player = new Player();
+        public static Player player = new();
         public static void StartGame()
         {
             PrintUtils.SlowPrint("What is your name young traveller?");
@@ -16,9 +16,11 @@ namespace bordertale
             if (player.name == "dev")
             {
                 player.name = "Developer";
-                player.job = new Articles.Job("Fighter", 120, 40);
+                player.job = new Articles.Job("Fighter", 120, 40, (Weapon)ItemFactory.CreateItem("sword"));
                 player.SetJob();
                 Map.PopulateLocation();
+                // * Start Tab Autocompletion
+                ReadLine.AutoCompletionHandler = new AutoCompletionHandler();
                 MainGameLoop();
             }
             PrintUtils.SlowPrint($"What is will your role be {player.name}?");
@@ -55,10 +57,13 @@ namespace bordertale
             PrintUtils.GetHash(28);
             PrintUtils.CenterPadHash("Let's Jump In!", 28);
             PrintUtils.GetHash(28);
+            // * Start Tab Autocompletion
+            ReadLine.AutoCompletionHandler = new AutoCompletionHandler();
             MainGameLoop();
         }
         public static void MainGameLoop()
         {
+
             player.PrintLocation();
             while (!player.dead)
             {
@@ -105,7 +110,14 @@ namespace bordertale
                         break;
                     case "help":
                         inLoop = false;
-                        Screens.HelpScreen(true);
+                        if (words.Length == 2)
+                        {
+                            Screens.HelpScreen(words[1]);
+                        }
+                        else
+                        {
+                            Screens.HelpScreen(true);
+                        }
                         break;
                     case "mission":
                         inLoop = false;
@@ -118,15 +130,19 @@ namespace bordertale
                         break;
                     case "move":
                         inLoop = false;
-                        if (words.Length <= 2)
+                        if (words.Length == 2)
                         {
                             string direction = words[1];
                             player.Move(direction);
                         }
-                        else if (words.Length == 3 & words[1] == "tp")
+                        else if (words.Length == 3 && words[1] == "tp")
                         {
                             string destination = words[2];
                             player.Move(true, destination);
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nPlease type where you want to go.");
                         }
                         break;
                     default:
