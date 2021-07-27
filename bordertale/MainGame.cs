@@ -105,13 +105,13 @@ namespace bordertale
                         inLoop = false;
                         switch (player.inventory.FirstOrDefault(item => item.title == words[1]).GetType().ToString())
                         {
-                            case "Weapon":
-                                player.Equip((Weapon) player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
+                            case "bordertale.Articles.Weapon":
+                                player.Equip((Weapon)player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
                                 break;
-                            case "Armour":
-                                player.Equip((Armour) player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
+                            case "bordertale.Articles.Armour":
+                                player.Equip((Armour)player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
                                 break;
-                            case "Shield":
+                            case "bordertale.Articles.Shield":
                                 throw new NotImplementedException();
                             default:
                                 break;
