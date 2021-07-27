@@ -1,10 +1,10 @@
-name: .NET
+name: Build
 
 on:
   push:
-    branches: [ main, dev/*, release/* ]
+    branches: [ main, dev/*, release/*, develop ]
   pull_request:
-    branches: [ main, dev/*, release/* ]
+    branches: [ main, dev/*, release/*, develop ]
 
 jobs:
   build:
@@ -22,11 +22,27 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal --no-restore
+      run: |
+        dotnet build
+        dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
+      run: dotnet publish /home/runner/work/bordertale/bordertale/bordertale -r win-x64 -p:PublishSingleFile=true --configuration Release --self-contained true
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
         name: latest
-        path: /home/runner/work/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
+        path: /home/runner/work/bordertale/bordertale/bordertale/bin/Release/net5.0/win-x64/publish/
+
+  notify:
+    name: Discord Notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: actions/checkout@v2
+      - name: Discord Notifier
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: fateyan/action-discord-notifier@v1.2.0
+        with:
+          message-title: New Commits Pushed
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}

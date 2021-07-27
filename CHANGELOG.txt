@@ -1,0 +1,12 @@
+# QoL Changes
+## Fixed
+ - [#66](https://github.com/tejmen/bordertale/issues/66) - Add Documentation
+ - [#57](https://github.com/tejmen.bordertale/issues/57) - Change to if else
+ - [#47](https://github.com/tejmen/bordertale/issues/47) - Move cannot take 0 args
+
+## Added
+ - [#65](https://github.com/tejmen/bordertale/issues/65) - ADD command help screens
+ - [#58](https://github.com/tejmen/bordertale/issues/58) - ADD tab-auto completion on most inputs
+ - [#59](https://github.com/tejmen/bordertale/issues/59) - ADD cardinal directions to the move command
+ - [#42](https://github.com/tejmen/bordertale/issues/42) - Add Check for already equipped armour and remove if necessary
+ - [#20](https://github.com/tejmen/bordertale/issues/20) - add rest of stats screen

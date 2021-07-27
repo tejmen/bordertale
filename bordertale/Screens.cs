@@ -8,6 +8,10 @@ namespace bordertale
 
         public static void HelpScreen(bool inGame)
         {
+            if (!inGame)
+            {
+                Console.Clear();
+            }
             int width = 31;
             PrintUtils.GetHash(width);
             PrintUtils.CenterPadHash("Help", width);
@@ -18,7 +22,7 @@ namespace bordertale
             PrintUtils.LeftPadHash("• Type 'look' to inspect", width);
             PrintUtils.LeftPadHash(" something", width);
             PrintUtils.LeftPadHash("• Type 'act' to do what you", width);
-            PrintUtils.LeftPadHash("can on your place", width);
+            PrintUtils.LeftPadHash(" can on your place", width);
             PrintUtils.LeftPadHash("• If you find a Dungeon,", width);
             PrintUtils.LeftPadHash(" please help to excavate it", width);
             PrintUtils.LeftPadHash("• Find more weapons hidden", width);
@@ -29,7 +33,6 @@ namespace bordertale
             PrintUtils.LeftPadHash(" extra protection.", width);
             PrintUtils.CenterPadHash("Copyright 2019 tejmen09", width);
             PrintUtils.GetHash(width);
-            Thread.Sleep(500);
             switch (inGame)
             {
                 case true:
@@ -40,15 +43,40 @@ namespace bordertale
                     break;
             }
         }
+        
+        public static void HelpScreen(string command)
+        {
+            switch (command)
+            {
+                case "move":
+                    int len = 52;
+                    PrintUtils.GetHash(len);
+                    PrintUtils.CenterPadHash("Movement Help", len);
+                    PrintUtils.LeftPadHash("• Type 'move' and what direction you want to go",len);
+                    PrintUtils.GetHash(len);
+                    break;
+                case "":
+                default:
+                    Console.WriteLine($"'{command}' is not a valid command.");
+                    break;
+            }
+        }
         public static void TitleScreen()
         {
             int width = 28;
+            Console.WriteLine(" _______  _______  ______    ______   _______  ______    _______  _______  ___      _______ ");
+            Console.WriteLine("|  _    ||       ||    _ |  |      | |       ||    _ |  |       ||   _   ||   |    |       |");
+            Console.WriteLine("| |_|   ||   _   ||   | ||  |  _    ||    ___||   | ||  |_     _||  |_|  ||   |    |    ___|");
+            Console.WriteLine("|       ||  | |  ||   |_||_ | | |   ||   |___ |   |_||_   |   |  |       ||   |    |   |___ ");
+            Console.WriteLine("|  _   | |  |_|  ||    __  || |_|   ||    ___||    __  |  |   |  |       ||   |___ |    ___|");
+            Console.WriteLine("| |_|   ||       ||   |  | ||       ||   |___ |   |  | |  |   |  |   _   ||       ||   |___ ");
+            Console.WriteLine("|_______||_______||___|  |_||______| |_______||___|  |_|  |___|  |__| |__||_______||_______|\n");
             PrintUtils.GetHash(width);
             PrintUtils.CenterPadHash("Welcome to Bordertale!", width);
             PrintUtils.CenterPadHash("- Play -", width);
             PrintUtils.CenterPadHash("- Resume -", width);
             PrintUtils.CenterPadHash("- Help -", width);
-            PrintUtils.CenterPadHash("- Acknoledgements -", width);
+            PrintUtils.CenterPadHash("- Acknowledgements -", width);
             PrintUtils.CenterPadHash("- Quit -", width);
             PrintUtils.CenterPadHash("Copyright 2021 tejmen09", width);
             PrintUtils.GetHash(width);
@@ -80,7 +108,7 @@ namespace bordertale
                         break;
                     case "resume":
                         inLoop = false;
-                        MainGame.MainGameLoop();
+                        // TODO Add ResumeGame() Functionality, ideally from a json object stored through a file.
                         break;
                     default:
                         Console.WriteLine("Please enter a valid command.");
@@ -92,6 +120,7 @@ namespace bordertale
 
         private static void AcknowledgementsScreen()
         {
+            Console.Clear();
             PrintUtils.GetHash(31);
             PrintUtils.CenterPadHash("Acknowledgements", 31);
             PrintUtils.CenterPadHash("Beta Tested by:", 31);
@@ -107,7 +136,7 @@ namespace bordertale
 
         public static void Stats()
         {
-            int len = 66;
+            int len = 71;
             PrintUtils.GetHash(len);
             PrintUtils.CenterPadHash("STATS", len);
             PrintUtils.LeftPadHash($"You are {MainGame.player.name} the {MainGame.player.job.name}. ", len);
@@ -115,10 +144,24 @@ namespace bordertale
             PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp/1000)}.",len);
             PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len);
             PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len);
-            // @todo add rest of stats screen
-          //  PrintUtils.LeftPadHash($"Your current weapon, the {} does {} of damage.", len);
-          //  PrintUtils.LeftPadHash($"Your Inventory contains: , end=", len);
-          //  PrintUtils.LeftPadHash($"You are wearing these pieces of armour: ', end=''", len);
+            PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} of damage.", len);
+            String inventory = "Your Inventory contains: ";
+            if (MainGame.player.inventory != null)
+            {
+                foreach (var item in MainGame.player.inventory)
+                {
+                    inventory += item.name;
+                }
+            }
+            PrintUtils.LeftPadHash(inventory, len);
+            String armour = "You are wearing these pieces of armour: ";
+            if (MainGame.player.armour != null){
+                foreach (var item in MainGame.player.armour)
+                {
+                    armour += item.name;
+                }
+            }
+            PrintUtils.LeftPadHash(armour, len);
             PrintUtils.GetHash(len);
         }
     }

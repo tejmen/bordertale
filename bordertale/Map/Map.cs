@@ -52,6 +52,13 @@ namespace bordertale
         public static Location d2 = new Location();
         public static Location d3 = new Location();
         public static Location d4 = new Location();
+        public static Location GetLocation(string locationName)
+        {
+            var type = typeof(Map);
+            var locationField = type.GetField(locationName);
+            Location location = (Location)locationField.GetValue(null);
+            return location;
+        }
         // Population of Locations
         public static void PopulateLocation()
         {
@@ -125,7 +132,7 @@ namespace bordertale
                 action: () =>
                 {
                     Console.WriteLine("You pick up the knife.");
-                    // @todo Add Inventory append
+                    MainGame.player.Acquire(Helpers.ItemFactory.CreateItem("knife"));
                 });
             b2.Populate(
                 "Home",
@@ -279,7 +286,7 @@ namespace bordertale
                 d2,
                 d4,
                 action: () =>
-                { 
+                {
                     // combat here too
                 });
             d4.Populate(
