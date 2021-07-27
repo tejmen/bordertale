@@ -20,5 +20,10 @@ namespace bordertale.Entities
             this.xp = xp;
             this.money = money;
         }
+
+        internal void Damage(int amount)
+        {
+            this.hp -= amount;
+        }
     }
 }

@@ -250,7 +250,7 @@ namespace bordertale
                 null,
                 action: () =>
                 {
-                    CombatHandler.Combat(MobFactory.CreateMob("random"));
+                    CombatHandler.Combat(MobFactory.CreateMob("random"), MainGame.player);
                 });
             d1.Populate(
                 "Beach",
@@ -288,7 +288,7 @@ namespace bordertale
                 d4,
                 action: () =>
                 {
-                    CombatHandler.Combat(MobFactory.CreateMob("random"));
+                    CombatHandler.Combat(MobFactory.CreateMob("random"), MainGame.player);
                 });
             d4.Populate(
                 "End Portal",
