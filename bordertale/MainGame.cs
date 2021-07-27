@@ -110,7 +110,14 @@ namespace bordertale
                         break;
                     case "help":
                         inLoop = false;
-                        Screens.HelpScreen(true);
+                        if (words.Length == 2)
+                        {
+                            Screens.HelpScreen(words[1]);
+                        }
+                        else
+                        {
+                            Screens.HelpScreen(true);
+                        }
                         break;
                     case "mission":
                         inLoop = false;

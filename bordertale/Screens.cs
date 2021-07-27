@@ -43,6 +43,24 @@ namespace bordertale
                     break;
             }
         }
+        
+        public static void HelpScreen(string command)
+        {
+            switch (command)
+            {
+                case "move":
+                    int len = 52;
+                    PrintUtils.GetHash(len);
+                    PrintUtils.CenterPadHash("Movement Help", len);
+                    PrintUtils.LeftPadHash("• Type 'move' and what direction you want to go",len);
+                    PrintUtils.GetHash(len);
+                    break;
+                case "":
+                default:
+                    Console.WriteLine($"'{command}' is not a valid command.");
+                    break;
+            }
+        }
         public static void TitleScreen()
         {
             int width = 28;
