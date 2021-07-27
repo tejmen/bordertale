@@ -11,7 +11,7 @@ namespace bordertale
         public static Player player = new();
         public static void StartGame()
         {
-            Console.WriteLine(Mobs.PickRandom().appear);
+            Console.WriteLine(MobFactory.CreateMob("random").appear);
             PrintUtils.SlowPrint("What is your name young traveller?");
             player.name = PrintUtils.Input();
             if (player.name == "dev")
