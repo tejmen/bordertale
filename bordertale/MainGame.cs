@@ -103,19 +103,24 @@ namespace bordertale
                         break;
                     case "equip":
                         inLoop = false;
-                        switch (player.inventory.FirstOrDefault(item => item.title == words[1]).GetType().ToString())
+                        Item itemToEquip = player.inventory.FirstOrDefault(item => item.title == words[1].ToLower());
+                        if (itemToEquip != null)
                         {
-                            case "bordertale.Articles.Weapon":
-                                player.Equip((Weapon)player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
-                                break;
-                            case "bordertale.Articles.Armour":
-                                player.Equip((Armour)player.inventory.FirstOrDefault(item => item.title == words[1].ToLower()));
-                                break;
-                            case "bordertale.Articles.Shield":
-                                throw new NotImplementedException();
-                            default:
-                                break;
+                            switch (itemToEquip.GetType().ToString())
+                            {
+                                case "bordertale.Articles.Weapon":
+                                    player.Equip((Weapon)itemToEquip);
+                                    break;
+                                case "bordertale.Articles.Armour":
+                                    player.Equip((Armour)itemToEquip);
+                                    break;
+                                case "bordertale.Articles.Shield":
+                                    throw new NotImplementedException();
+                                default:
+                                    break;
+                            }
                         }
+                        Console.WriteLine("That's not an item you have. Try Again.");
                         break;
                     case "stats":
                         inLoop = false;
