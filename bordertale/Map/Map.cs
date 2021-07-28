@@ -80,7 +80,7 @@ namespace bordertale
                     }
                     else
                     {
-                        // @todo Add Screen.Shop()
+                        Screens.ShopScreen();
                     }
                 });
             a2.Populate(
