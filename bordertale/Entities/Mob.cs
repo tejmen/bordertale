@@ -9,9 +9,9 @@ namespace bordertale.Entities
         public string kill;
         public string defeat;
 
-        public Effects effects;
+        public List<Effects> effects;
 
-        public Mob(string appear, string attack, string kill, string defeat, int max, int ap, int xp, int money, Effects effects = Effects.None) //@todo Add effects to Mob Constructor
+        public Mob(string appear, string attack, string kill, string defeat, int max, int ap, int xp, int money, List<Effects> effects = null)
         {
             this.appear = appear;
             this.attack = attack;
