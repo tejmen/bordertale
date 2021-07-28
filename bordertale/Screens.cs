@@ -164,5 +164,77 @@ namespace bordertale
             PrintUtils.LeftPadHash(armour, len);
             PrintUtils.GetHash(len);
         }
+        public static void ShopScreen()
+        {
+            PrintUtils.GetHash(103);
+            Console.Write(PrintUtils.CenterPadHashReturn("SHOP",103));
+Console.WriteLine($@"
+#                            #        ████████████████       #       ██████████████████████████       #
+#      ██████    ██████      #      ██              ▒▒██     #     ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██     #
+#    ██  ▒▒██    ██  ▒▒██    #      ██              ▒▒██     #     ██▒▒                      ▒▒██     #
+#    ██  ▒▒██    ██  ▒▒██    #      ██    ▒▒▒▒▒▒▒▒  ▒▒██     #     ██▒▒                      ▒▒██     #
+#    ██  ▒▒██    ██  ▒▒██    #      ██  ▒▒▒▒████▒▒  ▒▒██     #     ██▒▒                      ▒▒██     #
+#  ██    ▒▒██    ██      ██  #      ██  ▒▒██    ██  ▒▒██     #     ██▒▒                      ▒▒██     #
+#██    ▒▒▒▒██    ██▒▒    ▒▒██#      ██  ▒▒██    ██  ▒▒██     #     ██▒▒                      ▒▒██     #
+#██▒▒▒▒▒▒██        ██▒▒▒▒▒▒██#      ██  ▒▒██    ██  ▒▒██     #     ██▒▒                      ▒▒██     #
+#████████            ████████#      ██▒▒▒▒██    ██▒▒▒▒██     #     ██▒▒                      ▒▒██     #
+#                            #      ████████    ████████     #     ██▒▒          ██          ▒▒██     #
+#   [1]Boots        ₴ 10     #  [2]Leggings     ₴ 20         #     ██▒▒        ██████        ▒▒██     #
+##############################################################     ██▒▒          ██          ▒▒██     #
+#                            #       ████        ████        #     ██▒▒                      ▒▒██     #
+#                            #   ████  ▒▒██    ██    ████    #     ██▒▒                      ▒▒██     #
+#       ████████████         # ██      ▒▒██    ██      ▒▒██  #     ██▒▒                      ▒▒██     #
+#     ██          ▒▒██       # ██          ████        ▒▒██  #     ██▒▒                      ▒▒██     #
+#   ██            ▒▒▒▒██     # ██▒▒                  ▒▒▒▒██  #     ██▒▒                      ▒▒██     #
+#   ██          ▒▒▒▒▒▒██     #   ██                ▒▒▒▒██    #       ██▒▒                  ▒▒██       #
+#   ██    ████████▒▒▒▒██     #   ██▒▒              ▒▒▒▒██    #         ██▒▒              ▒▒██         #
+#   ██  ████████████▒▒██     #     ██              ▒▒██      #           ██▒▒          ▒▒██           #
+#   ██  ████████████▒▒██     #     ██            ▒▒▒▒██      #             ██▒▒▒▒▒▒▒▒▒▒██             #
+#     ████        ████       #     ██▒▒        ▒▒▒▒▒▒██      #               ██▒▒▒▒▒▒██               #
+#                            #     ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██      #                 ██▒▒██                 #
+#                            #       ██▒▒▒▒▒▒▒▒▒▒▒▒██        #                   ██                   #
+#                            #         ████████████          #                                        #
+#                            #                               #                                        #
+#    [3]Helmet      ₴ 30     #      [4]Chestplate ₴ 40       #     [5]Shield     ₴ 35                 #");
+        PrintUtils.GetHash(103);
+        PrintUtils.CenterPadHash("Type the number of the you want to buy to purchase. Type back to go back.", 103);
+        PrintUtils.CenterPadHash($"You have ₴{MainGame.player.money.ToString()}.",103);
+        PrintUtils.GetHash(103);
+        bool inLoop = true;
+            while (inLoop)
+            {
+                string cart = PrintUtils.Input().ToLower();
+                switch (cart)
+                {
+                    case "1":
+                        inLoop = false;
+                        MainGame.player.Acquire(Helpers.ItemFactory.CreateItem("boots"));
+                        break;
+                    case "2":
+                        inLoop = false;
+                        MainGame.player.Acquire(Helpers.ItemFactory.CreateItem("leggings"));
+                        break;
+                    case "3":
+                        inLoop = false;
+                        MainGame.player.Acquire(Helpers.ItemFactory.CreateItem("helmet"));
+                        break;
+                    case "4":
+                        inLoop = false;
+                        MainGame.player.Acquire(Helpers.ItemFactory.CreateItem("chestplate"));
+                        break;
+                    case "5":
+                        inLoop = false;
+                        MainGame.player.Acquire(Helpers.ItemFactory.CreateItem("shield"));
+                        break;
+                    case "back":
+                        inLoop = false;
+                        MainGame.Prompt();
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid number.");
+                        break;
+                }
+            }
+        }
     }
 }
