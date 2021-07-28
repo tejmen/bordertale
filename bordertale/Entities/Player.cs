@@ -110,7 +110,7 @@ namespace bordertale.Entities
             }
         }
 
-        internal void Heal()
+        public void Heal()
         {
             this.HpChange(this.heal);
         }
