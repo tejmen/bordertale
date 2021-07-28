@@ -8,6 +8,7 @@ namespace bordertale.Entities
 {
     public enum Effects
     {
+        None,
         Poison,
         Burning,
         Frozen,
