@@ -170,7 +170,7 @@ namespace bordertale
             PrintUtils.GetHash(15);
             PrintUtils.CenterPadHash("GOODBYE!!", 15);
             PrintUtils.GetHash(15);
-            Thread.Sleep(500);
+            Thread.Sleep(3000);
             Environment.Exit(0);
         }
     }

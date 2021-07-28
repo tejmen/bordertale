@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Globalization;
+using System.Net.Mime;
+using System;
 using System.Threading;
 
 namespace bordertale
@@ -129,6 +131,58 @@ namespace bordertale
                 Thread.Sleep(delayInMilliseconds);
             }
             Console.Write("\n");
+        }
+
+        /// <summary>
+        /// Combination of GetHash and CenterPadHash to create a box
+        /// </summary>
+        /// <param name="text">String to center-align</param>
+        /// <param name="length">Final width of box</param>
+        public static void CenterBoxHash(string text, int length)
+        {
+            PrintUtils.GetHash(length);
+            PrintUtils.CenterPadHash(text, length);
+            PrintUtils.GetHash(length);
+        }
+
+        /// <summary>
+        /// Returns a combination of GetHash and CenterPadHash to create a box
+        /// </summary>
+        /// <param name="text">String to center-align</param>
+        /// <param name="length">Final width of box</param>
+        /// <returns></returns>
+        public static string CenterBoxHashReturn(string text, int length)
+        {
+            var finalString = PrintUtils.GetHashReturn(length);
+            finalString += PrintUtils.CenterPadHashReturn(text, length);
+            finalString += PrintUtils.GetHashReturn(length);
+            return finalString;
+        }
+
+        /// <summary>
+        /// Combination of GetHash and LeftPadHash to create a box
+        /// </summary>
+        /// <param name="text">String to left-align</param>
+        /// <param name="length">Final width of box</param>
+        public static void LeftBoxHash(string text, int length)
+        {
+            PrintUtils.GetHash(length);
+            PrintUtils.LeftPadHash(text, length);
+            PrintUtils.GetHash(length);
+        }
+
+        /// <summary>
+        /// Returns a combination of GetHash and LeftPadHash
+        /// </summary>
+        /// <param name="text">String to left-align</param>
+        /// <param name="length">Final width of box</param>
+        /// <returns></returns>
+        public static string LeftBoxHashReturn(string text, int length)
+        {
+            var finalString = PrintUtils.GetHashReturn(length);
+            finalString += PrintUtils.LeftPadHashReturn(text, length);
+            finalString += PrintUtils.GetHashReturn(length);
+            return finalString;
         }
 
         /// <summary>

@@ -29,9 +29,18 @@ namespace bordertale.Helpers
                 PrintUtils.LeftPadHash("You levelled up!", 20);
                 PrintUtils.GetHash(20);
             }
+            List<Effects> effectsToRemove = new List<Effects>();
+            foreach (Effects effect in player.effects)
+            {
+                effectsToRemove.Add(effect);
+            }
+            foreach (Effects effect in effectsToRemove)
+            {
+                player.effects.Remove(effect);
+            }
         }
 
-        private static void CombatRound(Mob mob, Player player,  bool skipForTesting = false)
+        private static void CombatRound(Mob mob, Player player, bool skipForTesting = false)
         {
             bool willDefend = false; // * Used for defending with shield
             var len = 88;
@@ -64,16 +73,16 @@ namespace bordertale.Helpers
                         {
                             mob.hp = 0;
                         }
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length);
-                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length);
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length);
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
+                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length + 5);
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
                         break;
                     case "kill":
                         inLoop = false;
                         mob.hp = 0;
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length);
-                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length);
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length);
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
+                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length + 5);
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
                         break;
                     case "heal":
                         inLoop = false;
@@ -127,7 +136,28 @@ namespace bordertale.Helpers
                         }
                         player.armour.RemoveAll(item => item.durability <= 0);
                     }
+                    Console.WriteLine(mob.attack);
                     player.Damage(damage);
+                    if (mob.effects != null)
+                    {
+                        List<Effects> effects = new();
+                        foreach (Effects effect in mob.effects) // * Add Effects to Player
+                        {
+                            if (!player.effects.Contains(effect))
+                            {
+                                player.effects.Add(effect);
+                            }
+                            effects.Add(effect);
+                        }
+                        foreach (Effects effect in effects) // * Remove Effects from Mob
+                        {
+                            mob.effects.Remove(effect);
+                        }
+                        foreach (Effects effect in player.effects) // * Handle Player's current Effects
+                        {
+                            EffectsHandler.HandleEffect(player, effect);
+                        }
+                    }
                 }
                 if (player.hp <= 0)
                 {

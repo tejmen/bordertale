@@ -24,10 +24,5 @@ namespace bordertale.Entities
             this.money = money;
             this.effects = effects;
         }
-
-        internal void Damage(int amount)
-        {
-            this.hp -= amount;
-        }
     }
 }

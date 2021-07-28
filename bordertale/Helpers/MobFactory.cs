@@ -33,7 +33,7 @@ namespace bordertale.Helpers
                               + PrintUtils.CenterPadHashReturn("You have gained 40 money.", 36)
                               + "\n"
                               + PrintUtils.GetHashReturn(36),
-                              600, 10, 500, 40);
+                              600, 10, 500, 40, new() {Effects.Poison});
         private static Mob greenS = new Mob(PrintUtils.GetHashReturn(42)
                                                + "\n"
                                                + PrintUtils.CenterPadHashReturn("A Green Slime appeared out of the dark.", 42)
@@ -61,7 +61,7 @@ namespace bordertale.Helpers
                                                + PrintUtils.CenterPadHashReturn("You have gained 10 money.", 36)
                                                + "\n"
                                                + PrintUtils.GetHashReturn(36),
-                                               300, 40, 100, 10);
+                                               300, 40, 100, 10, new() { Effects.Burning });
         private static Mob skeleton = new Mob(PrintUtils.GetHashReturn(39)
                                        + "\n"
                                        + PrintUtils.CenterPadHashReturn("A Skeleton appeared out of the dark.", 39)
@@ -117,7 +117,7 @@ namespace bordertale.Helpers
                                        + PrintUtils.CenterPadHashReturn("You have gained 25 money.", 36)
                                        + "\n"
                                        + PrintUtils.GetHashReturn(36),
-                                       500, 60, 500, 25);
+                                       500, 60, 500, 25, new() { Effects.Frozen });
         /// <summary>
         /// Create a mob based on its name
         /// </summary>
