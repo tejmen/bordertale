@@ -127,7 +127,7 @@ namespace bordertale.Helpers
                         }
                         player.armour.RemoveAll(item => item.durability <= 0);
                     }
-                    player.HpChange(-damage);
+                    player.Damage(damage);
                 }
                 if (player.hp <= 0)
                 {

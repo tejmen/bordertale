@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace bordertale.Entities
 {
     public class Mob : Entity
@@ -8,7 +9,9 @@ namespace bordertale.Entities
         public string kill;
         public string defeat;
 
-        public Mob(string appear, string attack, string kill, string defeat, int max, int ap, int xp, int money) //@todo Add effects to Mob Constructor
+        public List<Effects> effects;
+
+        public Mob(string appear, string attack, string kill, string defeat, int max, int ap, int xp, int money, List<Effects> effects = null)
         {
             this.appear = appear;
             this.attack = attack;
@@ -19,6 +22,7 @@ namespace bordertale.Entities
             this.ap = ap;
             this.xp = xp;
             this.money = money;
+            this.effects = effects;
         }
 
         internal void Damage(int amount)

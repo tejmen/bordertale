@@ -25,6 +25,7 @@ namespace bordertale.Entities
             this.location = Map.b2;
             this.inventory = new List<Item>();
             this.weapon = null;
+            this.effects = new List<Effects>();
         }
 
         internal void xpChange(int xp)
@@ -109,7 +110,7 @@ namespace bordertale.Entities
             }
         }
 
-        internal void Heal()
+        public void Heal()
         {
             this.HpChange(this.heal);
         }
@@ -237,7 +238,7 @@ namespace bordertale.Entities
         public Job job;
         public int heal;
         public Location location;
-        // @todo Add Effects Class
+        public List<Effects> effects;
         public List<Armour> armour;
         public Shield shield;
         public bool dead;
