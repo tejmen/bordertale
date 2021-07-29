@@ -106,6 +106,7 @@ namespace bordertale
                         Item itemToEquip = player.inventory.FirstOrDefault(item => item.title == words[1].ToLower());
                         if (itemToEquip != null)
                         {
+                            PrintUtils.LeftBoxHash($"Equipping {words[1]}", $"Equipping {words[1]}".Length + 5);
                             switch (itemToEquip.GetType().ToString())
                             {
                                 case "bordertale.Articles.Weapon":
@@ -120,7 +121,10 @@ namespace bordertale
                                     break;
                             }
                         }
+                        else
+                        {
                         Console.WriteLine("That's not an item you have. Try Again.");
+                        }
                         break;
                     case "stats":
                         inLoop = false;
@@ -172,9 +176,9 @@ namespace bordertale
 
         public static void EndGame()
         {
-            PrintUtils.GetHash(15);
-            PrintUtils.CenterPadHash("GOODBYE!!", 15);
-            PrintUtils.GetHash(15);
+            PrintUtils.GetHash(15, ConsoleColor.DarkYellow);
+            PrintUtils.CenterPadHash("GOODBYE!!", 15, ConsoleColor.DarkYellow);
+            PrintUtils.GetHash(15, ConsoleColor.DarkYellow);
             Thread.Sleep(3000);
             Environment.Exit(0);
         }

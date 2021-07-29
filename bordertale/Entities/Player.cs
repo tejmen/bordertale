@@ -46,10 +46,10 @@ namespace bordertale.Entities
         {
             System.Console.WriteLine("");
             int length = 4 + this.location.description.Length;
-            PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(this.location.zoneName, length);
-            PrintUtils.LeftPadHash(this.location.description, length);
-            PrintUtils.GetHash(length);
+            PrintUtils.GetHash(length, ConsoleColor.Cyan);
+            PrintUtils.LeftPadHash(this.location.zoneName, length, ConsoleColor.Cyan);
+            PrintUtils.LeftPadHash(this.location.description, length, ConsoleColor.Cyan);
+            PrintUtils.GetHash(length, ConsoleColor.Cyan);
         }
 
         public void Move(string direction)

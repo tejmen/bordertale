@@ -76,7 +76,7 @@ namespace bordertale
                 {
                     if (MainGame.player.money == 0)
                     {
-                        PrintUtils.SlowPrint("\"Go get money so you can buy stuff!\" shouts one of the merchants.", 100);
+                        PrintUtils.SlowPrint("\"Go get money so you can buy stuff!\" shouts one of the merchants.");
                     }
                     else
                     {
@@ -107,7 +107,7 @@ namespace bordertale
                 "A villager by the Well in the middle says: \"You should throw a gold coin in the well for good luck\"",
                 () =>
                 {
-                    Console.WriteLine("I wish I could get good luck, but I dont have any money.");
+                    Console.WriteLine("I wish I could get good luck, but I don't have any money.");
                 });
             a4.Populate(
                 "Town Hall",

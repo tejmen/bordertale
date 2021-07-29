@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using Internal;
+using System.Globalization;
 using System.Net.Mime;
 using System;
 using System.Threading;
@@ -12,8 +13,13 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to center-align</param>
         /// <param name="length">Final length of string, including hashes</param>
-        public static void CenterPadHash(string text, int length)
+        /// <param name="color">Foreground color to print</param>
+        public static void CenterPadHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             if (text == null)
                 throw new ArgumentNullException();
 
@@ -31,16 +37,23 @@ namespace bordertale
             }
 
             Console.WriteLine(finalString);
+            Console.ResetColor();
         }
 
         /// <summary>
         /// Writes a string of hashes with a given length
         /// </summary>
-        /// <param name="length">Final length of hashes</param>
-        public static void GetHash(int length)
+        /// <param name="length">Final length of hashes</par>
+        /// <param name="color">Foreground color to print</param>
+        public static void GetHash(int length, ConsoleColor color = ConsoleColor.Gray)
         {
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             var finalString = new string('#', length);
             Console.WriteLine(finalString.ToString());
+            Console.ResetColor();
         }
 
         /// <summary>
@@ -48,8 +61,13 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to left-align</param>
         /// <param name="length">Final length of string, including hashes</param>
-        public static void LeftPadHash(string text, int length)
+        /// <param name="color">Foreground color to print</param>
+        public static void LeftPadHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             if (text == null)
                 throw new ArgumentNullException();
 
@@ -59,6 +77,7 @@ namespace bordertale
             string finalString = text.PadRight(length - 3);
             finalString = "# " + finalString + '#';
             Console.WriteLine(finalString);
+            Console.ResetColor();
         }
 
         /// <summary>
@@ -84,7 +103,6 @@ namespace bordertale
                     finalString = finalString.Insert(finalString.Length - 1, " ");
                 }
             }
-
             return finalString;
         }
 
@@ -123,14 +141,20 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to print</param>
         /// <param name="delayInMilliseconds">Delay per character</param>
-        public static void SlowPrint(string text, int delayInMilliseconds = 50)
+        /// <param name="color">Foreground color to print</param>
+        public static void SlowPrint(string text, int delayInMilliseconds = 50, ConsoleColor color = ConsoleColor.Gray)
         {
-            foreach (char c in text)
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
             {
-                Console.Write(c);
+                Console.ForegroundColor = color;
+            }
+            foreach (char x in text)
+            {
+                Console.Write(x);
                 Thread.Sleep(delayInMilliseconds);
             }
             Console.Write("\n");
+            Console.ResetColor();
         }
 
         /// <summary>
@@ -138,11 +162,17 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to center-align</param>
         /// <param name="length">Final width of box</param>
-        public static void CenterBoxHash(string text, int length)
+        /// <param name="color">Foreground color to print</param>
+        public static void CenterBoxHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
-            PrintUtils.GetHash(length);
-            PrintUtils.CenterPadHash(text, length);
-            PrintUtils.GetHash(length);
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
+            PrintUtils.GetHash(length, color);
+            PrintUtils.CenterPadHash(text, length, color);
+            PrintUtils.GetHash(length, color);
+            Console.ResetColor();
         }
 
         /// <summary>
@@ -164,11 +194,17 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to left-align</param>
         /// <param name="length">Final width of box</param>
-        public static void LeftBoxHash(string text, int length)
+        /// <param name="color">Foreground color to print</param>
+        public static void LeftBoxHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
-            PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(text, length);
-            PrintUtils.GetHash(length);
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
+            PrintUtils.GetHash(length, color);
+            PrintUtils.LeftPadHash(text, length, color);
+            PrintUtils.GetHash(length, color);
+            Console.ResetColor();
         }
 
         /// <summary>
