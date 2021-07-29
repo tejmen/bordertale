@@ -76,7 +76,7 @@ namespace bordertale
                 {
                     if (MainGame.player.money == 0)
                     {
-                        PrintUtils.SlowPrint("\"Go get money so you can buy stuff!\" shouts one of the merchants.", 100);
+                        PrintUtils.SlowPrint("\"Go get money so you can buy stuff!\" shouts one of the merchants.");
                     }
                     else
                     {

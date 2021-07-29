@@ -175,7 +175,8 @@ namespace bordertale
         }
         public static void ShopScreen()
         {
-            PrintUtils.GetHash(103);
+            PrintUtils.GetHash(103, ConsoleColor.Cyan);
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(PrintUtils.CenterPadHashReturn("SHOP", 103));
             Console.WriteLine($@"
 #                            #        ████████████████       #       ██████████████████████████       #

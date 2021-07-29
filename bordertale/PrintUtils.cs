@@ -74,9 +74,8 @@ namespace bordertale
         /// <param name="text">String to center-align</param>
         /// <param name="length">Final length of string, including hashes</param>
         /// <returns>Left-aligned string</returns>
-        public static string CenterPadHashReturn(string text, int length, ConsoleColor color = ConsoleColor.Gray)
+        public static string CenterPadHashReturn(string text, int length)
         {
-            Console.ForegroundColor = color;
             if (text == null)
                 throw new ArgumentNullException();
 
@@ -92,7 +91,6 @@ namespace bordertale
                     finalString = finalString.Insert(finalString.Length - 1, " ");
                 }
             }
-            Console.ResetColor();
             return finalString;
         }
 
