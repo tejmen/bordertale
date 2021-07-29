@@ -14,6 +14,11 @@ namespace bordertale
         {
             PrintUtils.SlowPrint("What is your name young traveller?");
             player.name = PrintUtils.Input();
+            while (player.name == null)
+            {
+                Console.WriteLine("Please enter a name.");
+                player.name = PrintUtils.Input();
+            }
             if (player.name == "dev")
             {
                 player.name = "Developer";
@@ -123,7 +128,7 @@ namespace bordertale
                         }
                         else
                         {
-                        Console.WriteLine("That's not an item you have. Try Again.");
+                            Console.WriteLine("That's not an item you have. Try Again.");
                         }
                         break;
                     case "stats":
