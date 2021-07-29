@@ -44,7 +44,7 @@ namespace bordertale
                     break;
             }
         }
-        
+
         public static void HelpScreen(string command)
         {
             switch (command)
@@ -53,7 +53,7 @@ namespace bordertale
                     int len = 52;
                     PrintUtils.GetHash(len, ConsoleColor.Magenta);
                     PrintUtils.CenterPadHash("Movement Help", len, ConsoleColor.Magenta);
-                    PrintUtils.LeftPadHash("• Type 'move' and what direction you want to go",len, ConsoleColor.Magenta);
+                    PrintUtils.LeftPadHash("• Type 'move' and what direction you want to go", len, ConsoleColor.Magenta);
                     PrintUtils.GetHash(len, ConsoleColor.Magenta);
                     break;
                 case "":
@@ -65,17 +65,23 @@ namespace bordertale
         public static void TitleScreen()
         {
             int width = 28;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(" _______  _______  ______    ______   _______  ______    _______  _______  ___      _______ ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("|  _    ||       ||    _ |  |      | |       ||    _ |  |       ||   _   ||   |    |       |");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("| |_|   ||   _   ||   | ||  |  _    ||    ___||   | ||  |_     _||  |_|  ||   |    |    ___|");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("|       ||  | |  ||   |_||_ | | |   ||   |___ |   |_||_   |   |  |       ||   |    |   |___ ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("|  _   | |  |_|  ||    __  || |_|   ||    ___||    __  |  |   |  |       ||   |___ |    ___|");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("| |_|   ||       ||   |  | ||       ||   |___ |   |  | |  |   |  |   _   ||       ||   |___ ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("|_______||_______||___|  |_||______| |_______||___|  |_|  |___|  |__| |__||_______||_______|\n");
             PrintUtils.GetHash(width, ConsoleColor.Yellow);
             PrintUtils.CenterPadHash("Welcome to Bordertale!", width, ConsoleColor.Yellow);
-            PrintUtils.CenterPadHash("- Play -", width ,ConsoleColor.Yellow);
+            PrintUtils.CenterPadHash("- Play -", width, ConsoleColor.Yellow);
             PrintUtils.CenterPadHash("- Resume -", width, ConsoleColor.Yellow);
             PrintUtils.CenterPadHash("- Help -", width, ConsoleColor.Yellow);
             PrintUtils.CenterPadHash("- Acknowledgements -", width, ConsoleColor.Yellow);
@@ -142,8 +148,8 @@ namespace bordertale
             PrintUtils.GetHash(len);
             PrintUtils.CenterPadHash("STATS", len);
             PrintUtils.LeftPadHash($"You are {MainGame.player.name} the {MainGame.player.job.name}. ", len);
-            PrintUtils.LeftPadHash($"You have {MainGame.player.hp} hp.",len);
-            PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp/1000)}.",len);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.hp} hp.", len);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp / 1000)}.", len);
             PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len);
             PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len);
             PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} of damage.", len);
@@ -157,7 +163,8 @@ namespace bordertale
             }
             PrintUtils.LeftPadHash(inventory, len);
             String armour = "You are wearing these pieces of armour: ";
-            if (MainGame.player.armour != null){
+            if (MainGame.player.armour != null)
+            {
                 foreach (var item in MainGame.player.armour)
                 {
                     armour += item.name;
@@ -169,8 +176,8 @@ namespace bordertale
         public static void ShopScreen()
         {
             PrintUtils.GetHash(103);
-            Console.Write(PrintUtils.CenterPadHashReturn("SHOP",103));
-Console.WriteLine($@"
+            Console.Write(PrintUtils.CenterPadHashReturn("SHOP", 103));
+            Console.WriteLine($@"
 #                            #        ████████████████       #       ██████████████████████████       #
 #      ██████    ██████      #      ██              ▒▒██     #     ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██     #
 #    ██  ▒▒██    ██  ▒▒██    #      ██              ▒▒██     #     ██▒▒                      ▒▒██     #
@@ -198,11 +205,11 @@ Console.WriteLine($@"
 #                            #         ████████████          #                                        #
 #                            #                               #                                        #
 #    [3]Helmet      ₴ 30     #      [4]Chestplate ₴ 40       #     [5]Shield     ₴ 35                 #");
-        PrintUtils.GetHash(103);
-        PrintUtils.CenterPadHash("Type the number of the you want to buy to purchase. Type back to go back.", 103);
-        PrintUtils.CenterPadHash($"You have ₴{MainGame.player.money.ToString()}.",103);
-        PrintUtils.GetHash(103);
-        bool inLoop = true;
+            PrintUtils.GetHash(103);
+            PrintUtils.CenterPadHash("Type the number of the you want to buy to purchase. Type back to go back.", 103);
+            PrintUtils.CenterPadHash($"You have ₴{MainGame.player.money.ToString()}.", 103);
+            PrintUtils.GetHash(103);
+            bool inLoop = true;
             while (inLoop)
             {
                 string cart = PrintUtils.Input().ToLower();
