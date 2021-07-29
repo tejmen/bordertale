@@ -25,6 +25,12 @@ namespace bordertale.Entities
             this.location = Map.b2;
             this.inventory = new List<Item>();
             this.weapon = null;
+            this.effects = new List<Effects>();
+        }
+
+        internal void xpChange(int xp)
+        {
+            this.xp += xp;
         }
 
         public void SetJob()
@@ -40,10 +46,10 @@ namespace bordertale.Entities
         {
             System.Console.WriteLine("");
             int length = 4 + this.location.description.Length;
-            PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(this.location.zoneName, length);
-            PrintUtils.LeftPadHash(this.location.description, length);
-            PrintUtils.GetHash(length);
+            PrintUtils.GetHash(length, ConsoleColor.Cyan);
+            PrintUtils.LeftPadHash(this.location.zoneName, length, ConsoleColor.Cyan);
+            PrintUtils.LeftPadHash(this.location.description, length, ConsoleColor.Cyan);
+            PrintUtils.GetHash(length, ConsoleColor.Cyan);
         }
 
         public void Move(string direction)
@@ -57,6 +63,10 @@ namespace bordertale.Entities
                         Location destination = this.location.up;
                         this.SetLocation(destination);
                     }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
+                    }
                     break;
                 case "down":
                 case "south":
@@ -64,6 +74,10 @@ namespace bordertale.Entities
                     {
                         Location destination = this.location.down;
                         this.SetLocation(destination);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
                     }
                     break;
                 case "left":
@@ -73,6 +87,10 @@ namespace bordertale.Entities
                         Location destination = this.location.left;
                         this.SetLocation(destination);
                     }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
+                    }
                     break;
                 case "right":
                 case "east":
@@ -81,11 +99,20 @@ namespace bordertale.Entities
                         Location destination = this.location.right;
                         this.SetLocation(destination);
                     }
+                    else
+                    {
+                        Console.WriteLine("\nYou have reached the end of the map.");
+                    }
                     break;
                 default:
-                    Console.WriteLine("You have either reached the end of the map, or typed your command in wrong.");
+                    Console.WriteLine("You have typed your command in wrong.");
                     break;
             }
+        }
+
+        public void Heal()
+        {
+            this.HpChange(this.heal);
         }
 
         public void Move(bool tp, string location)
@@ -211,7 +238,7 @@ namespace bordertale.Entities
         public Job job;
         public int heal;
         public Location location;
-        // @todo Add Effects Class
+        public List<Effects> effects;
         public List<Armour> armour;
         public Shield shield;
         public bool dead;

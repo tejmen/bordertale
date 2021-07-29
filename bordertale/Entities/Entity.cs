@@ -11,6 +11,14 @@
         {
             this.hp += amount;
         }
+        public void Damage(int amount)
+        {
+            this.HpChange(-amount);
+        }
+        public void Heal(int amount)
+        {
+            this.HpChange(amount);
+        }
         public void HpReset()
         {
             this.hp = max;

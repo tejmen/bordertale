@@ -3,6 +3,7 @@ using bordertale.Entities;
 using bordertale.Helpers;
 using System;
 using System.Threading;
+using System.Linq;
 
 namespace bordertale
 {
@@ -13,6 +14,11 @@ namespace bordertale
         {
             PrintUtils.SlowPrint("What is your name young traveller?");
             player.name = PrintUtils.Input();
+            while (player.name == null)
+            {
+                Console.WriteLine("Please enter a name.");
+                player.name = PrintUtils.Input();
+            }
             if (player.name == "dev")
             {
                 player.name = "Developer";
@@ -102,7 +108,28 @@ namespace bordertale
                         break;
                     case "equip":
                         inLoop = false;
-                        // @todo add Player.Equip()
+                        Item itemToEquip = player.inventory.FirstOrDefault(item => item.title == words[1].ToLower());
+                        if (itemToEquip != null)
+                        {
+                            PrintUtils.LeftBoxHash($"Equipping {words[1]}", $"Equipping {words[1]}".Length + 5);
+                            switch (itemToEquip.GetType().ToString())
+                            {
+                                case "bordertale.Articles.Weapon":
+                                    player.Equip((Weapon)itemToEquip);
+                                    break;
+                                case "bordertale.Articles.Armour":
+                                    player.Equip((Armour)itemToEquip);
+                                    break;
+                                case "bordertale.Articles.Shield":
+                                    throw new NotImplementedException();
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("That's not an item you have. Try Again.");
+                        }
                         break;
                     case "stats":
                         inLoop = false;
@@ -154,10 +181,10 @@ namespace bordertale
 
         public static void EndGame()
         {
-            PrintUtils.GetHash(15);
-            PrintUtils.CenterPadHash("GOODBYE!!", 15);
-            PrintUtils.GetHash(15);
-            Thread.Sleep(500);
+            PrintUtils.GetHash(15, ConsoleColor.DarkYellow);
+            PrintUtils.CenterPadHash("GOODBYE!!", 15, ConsoleColor.DarkYellow);
+            PrintUtils.GetHash(15, ConsoleColor.DarkYellow);
+            Thread.Sleep(3000);
             Environment.Exit(0);
         }
     }
