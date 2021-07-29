@@ -13,9 +13,13 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to center-align</param>
         /// <param name="length">Final length of string, including hashes</param>
+        /// <param name="color">Foreground color to print</param>
         public static void CenterPadHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
-            Console.ForegroundColor = color;
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             if (text == null)
                 throw new ArgumentNullException();
 
@@ -39,10 +43,14 @@ namespace bordertale
         /// <summary>
         /// Writes a string of hashes with a given length
         /// </summary>
-        /// <param name="length">Final length of hashes</param>
+        /// <param name="length">Final length of hashes</par>
+        /// <param name="color">Foreground color to print</param>
         public static void GetHash(int length, ConsoleColor color = ConsoleColor.Gray)
         {
-            Console.ForegroundColor = color;
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             var finalString = new string('#', length);
             Console.WriteLine(finalString.ToString());
             Console.ResetColor();
@@ -53,9 +61,13 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to left-align</param>
         /// <param name="length">Final length of string, including hashes</param>
+        /// <param name="color">Foreground color to print</param>
         public static void LeftPadHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
-            Console.ForegroundColor = color;
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             if (text == null)
                 throw new ArgumentNullException();
 
@@ -129,9 +141,13 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to print</param>
         /// <param name="delayInMilliseconds">Delay per character</param>
+        /// <param name="color">Foreground color to print</param>
         public static void SlowPrint(string text, int delayInMilliseconds = 50, ConsoleColor color = ConsoleColor.Gray)
         {
-            Console.ForegroundColor = color;
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             foreach (char x in text)
             {
                 Console.Write(x);
@@ -146,9 +162,13 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to center-align</param>
         /// <param name="length">Final width of box</param>
+        /// <param name="color">Foreground color to print</param>
         public static void CenterBoxHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
-            Console.ForegroundColor = color;
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             PrintUtils.GetHash(length);
             PrintUtils.CenterPadHash(text, length);
             PrintUtils.GetHash(length);
@@ -174,9 +194,13 @@ namespace bordertale
         /// </summary>
         /// <param name="text">String to left-align</param>
         /// <param name="length">Final width of box</param>
+        /// <param name="color">Foreground color to print</param>
         public static void LeftBoxHash(string text, int length, ConsoleColor color = ConsoleColor.Gray)
         {
-            Console.ForegroundColor = color;
+            if (color != ConsoleColor.Gray && Console.ForegroundColor == ConsoleColor.Gray)
+            {
+                Console.ForegroundColor = color;
+            }
             PrintUtils.GetHash(length);
             PrintUtils.LeftPadHash(text, length);
             PrintUtils.GetHash(length);
@@ -202,9 +226,8 @@ namespace bordertale
         /// </summary>
         /// <param name="prompt">String to use as a prompt</param>
         /// <returns>Input from the console</returns>
-        public static string Input(string prompt = ">",  ConsoleColor color = ConsoleColor.Gray)
+        public static string Input(string prompt = ">")
         {
-            Console.ForegroundColor = color;
             if (prompt == null)
                 throw new ArgumentNullException();
 
@@ -214,7 +237,6 @@ namespace bordertale
             // Console.Write($"{prompt} ");
             // String input = Console.ReadLine().Trim();
             String input = ReadLine.Read($"{prompt} ");
-            Console.ResetColor();
             return input;
         }
     }
