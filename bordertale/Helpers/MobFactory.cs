@@ -20,7 +20,7 @@ namespace bordertale.Helpers
 
                               PrintUtils.GetHashReturn(53)
                               + "\n"
-                              + PrintUtils.CenterPadHashReturn("You are Dead, with a spider biting you to death.", 53)
+                              + PrintUtils.CenterPadHashReturn("You are Dead, with a spider biting your dead body.", 53)
                               + "\n"
                               + PrintUtils.GetHashReturn(53),
 
@@ -28,12 +28,12 @@ namespace bordertale.Helpers
                               + "\n"
                               + PrintUtils.CenterPadHashReturn("You have defeated a spider.", 36)
                               + "\n"
-                              + PrintUtils.CenterPadHashReturn("You have gained 350 XP.", 36)
+                              + PrintUtils.CenterPadHashReturn("You have gained 500 XP.", 36)
                               + "\n"
                               + PrintUtils.CenterPadHashReturn("You have gained 40 money.", 36)
                               + "\n"
                               + PrintUtils.GetHashReturn(36),
-                              600, 10, 500, 40);
+                              550, 10, 500, 40);
         private static Mob greenS = new Mob(PrintUtils.GetHashReturn(42)
                                                + "\n"
                                                + PrintUtils.CenterPadHashReturn("A Green Slime appeared out of the dark.", 42)
@@ -61,7 +61,7 @@ namespace bordertale.Helpers
                                                + PrintUtils.CenterPadHashReturn("You have gained 10 money.", 36)
                                                + "\n"
                                                + PrintUtils.GetHashReturn(36),
-                                               300, 40, 100, 10);
+                                               200, 30, 100, 10);
         private static Mob skeleton = new Mob(PrintUtils.GetHashReturn(39)
                                        + "\n"
                                        + PrintUtils.CenterPadHashReturn("A Skeleton appeared out of the dark.", 39)
@@ -89,7 +89,7 @@ namespace bordertale.Helpers
                                        + PrintUtils.CenterPadHashReturn("You have gained 25 money.", 36)
                                        + "\n"
                                        + PrintUtils.GetHashReturn(36),
-                                       500, 60, 300, 25);
+                                       400, 40, 300, 25);
         private static Mob zombie = new Mob(PrintUtils.GetHashReturn(37)
                                        + "\n"
                                        + PrintUtils.CenterPadHashReturn("A Zombie appeared out of the dark.", 37)
@@ -110,14 +110,14 @@ namespace bordertale.Helpers
 
                                        PrintUtils.GetHashReturn(36)
                                        + "\n"
-                                       + PrintUtils.CenterPadHashReturn("You have defeated a green slime.", 36)
+                                       + PrintUtils.CenterPadHashReturn("You have defeated a zombie.", 36)
                                        + "\n"
                                        + PrintUtils.CenterPadHashReturn("You have gained 500 XP.", 36)
                                        + "\n"
-                                       + PrintUtils.CenterPadHashReturn("You have gained 25 money.", 36)
+                                       + PrintUtils.CenterPadHashReturn("You have gained 30 money.", 36)
                                        + "\n"
                                        + PrintUtils.GetHashReturn(36),
-                                       500, 60, 500, 25);
+                                       400, 50, 500, 30);
         /// <summary>
         /// Create a mob based on its name
         /// </summary>
