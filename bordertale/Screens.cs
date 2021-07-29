@@ -79,6 +79,7 @@ namespace bordertale
             Console.WriteLine("| |_|   ||       ||   |  | ||       ||   |___ |   |  | |  |   |  |   _   ||       ||   |___ ");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("|_______||_______||___|  |_||______| |_______||___|  |_|  |___|  |__| |__||_______||_______|\n");
+            Console.ResetColor();
             PrintUtils.GetHash(width, ConsoleColor.Yellow);
             PrintUtils.CenterPadHash("Welcome to Bordertale!", width, ConsoleColor.Yellow);
             PrintUtils.CenterPadHash("- Play -", width, ConsoleColor.Yellow);
@@ -88,6 +89,7 @@ namespace bordertale
             PrintUtils.CenterPadHash("- Quit -", width, ConsoleColor.Yellow);
             PrintUtils.CenterPadHash("Copyright 2021 tejmen09", width, ConsoleColor.Yellow);
             PrintUtils.GetHash(width, ConsoleColor.Yellow);
+
             bool inLoop = true;
             while (inLoop)
             {
@@ -145,14 +147,15 @@ namespace bordertale
         public static void Stats()
         {
             int len = 71;
-            PrintUtils.GetHash(len);
-            PrintUtils.CenterPadHash("STATS", len);
-            PrintUtils.LeftPadHash($"You are {MainGame.player.name} the {MainGame.player.job.name}. ", len);
-            PrintUtils.LeftPadHash($"You have {MainGame.player.hp} hp.", len);
-            PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp / 1000)}.", len);
-            PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len);
-            PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len);
-            PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} of damage.", len);
+            ConsoleColor color = ConsoleColor.Cyan;
+            PrintUtils.GetHash(len, color);
+            PrintUtils.CenterPadHash("STATS", len, color);
+            PrintUtils.LeftPadHash($"You are {MainGame.player.name} the {MainGame.player.job.name}. ", len, color);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.hp} hp.", len, color);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp / 1000)}.", len, color);
+            PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len, color);
+            PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len, color);
+            PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} of damage.", len, color);
             String inventory = "Your Inventory contains: ";
             if (MainGame.player.inventory != null)
             {
@@ -161,7 +164,7 @@ namespace bordertale
                     inventory += item.name;
                 }
             }
-            PrintUtils.LeftPadHash(inventory, len);
+            PrintUtils.LeftPadHash(inventory, len, color);
             String armour = "You are wearing these pieces of armour: ";
             if (MainGame.player.armour != null)
             {
@@ -170,8 +173,8 @@ namespace bordertale
                     armour += item.name;
                 }
             }
-            PrintUtils.LeftPadHash(armour, len);
-            PrintUtils.GetHash(len);
+            PrintUtils.LeftPadHash(armour, len, color);
+            PrintUtils.GetHash(len, color);
         }
         public static void ShopScreen()
         {

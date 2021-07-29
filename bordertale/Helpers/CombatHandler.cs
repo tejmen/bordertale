@@ -13,21 +13,24 @@ namespace bordertale.Helpers
     {
         public static void Combat(Mob mob, Player player, bool skipForTesting = false)
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(mob.appear);
+            Console.ResetColor();
             while (mob.hp > 0)
             {
                 CombatRound(mob, player, skipForTesting);
             }
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(mob.defeat);
+            Console.ResetColor();
             player.xpChange(mob.xp);
             player.Pay(mob.money);
             int levels = (int)Math.Floor((float)player.xp / 1000);
             if (levels % 10 == 0)
             {
                 player.ap += 1;
-                PrintUtils.GetHash(20);
-                PrintUtils.LeftPadHash("You levelled up!", 20);
-                PrintUtils.GetHash(20);
+                PrintUtils.LeftBoxHash("You levelled up!", 20, ConsoleColor.Green);
             }
             List<Effects> effectsToRemove = new List<Effects>();
             foreach (Effects effect in player.effects)
@@ -73,27 +76,35 @@ namespace bordertale.Helpers
                         {
                             mob.hp = 0;
                         }
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
-                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length + 5);
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5, ConsoleColor.Green);
+                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length + 5, ConsoleColor.Green);
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5, ConsoleColor.Green);
+                        Console.ResetColor();
                         break;
                     case "kill":
                         inLoop = false;
                         mob.hp = 0;
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
-                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length + 5);
-                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5, ConsoleColor.Green);
+                        PrintUtils.LeftPadHash($"The monster's health is {mob.hp}", $"The monster's health is {mob.hp}".Length + 5, ConsoleColor.Green);
+                        PrintUtils.GetHash($"The monster's health is {mob.hp}".Length + 5, ConsoleColor.Green);
+                        Console.ResetColor();
                         break;
                     case "heal":
                         inLoop = false;
                         if (player.job == JobFactory.CreateJob("healer"))
                         {
                             player.Heal();
-                            PrintUtils.SlowPrint($"You have {player.hp} health now.", 100);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            PrintUtils.SlowPrint($"You have {player.hp} health now.", 100, ConsoleColor.Cyan);
+                            Console.ResetColor();
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("You can't heal. You're not a healer.");
+                            Console.ResetColor();
                         }
                         break;
                     case "defend":
@@ -104,17 +115,23 @@ namespace bordertale.Helpers
                             if (defends < 7)
                             {
                                 willDefend = true;
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
                                 Console.WriteLine("Your defence was successful, and the shield deflected the blow");
+                                Console.ResetColor();
                             }
                             else
                             {
                                 willDefend = false;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine("Unfortunately, your defence failed.");
+                                Console.ResetColor();
                             }
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("You don't have a shield. You can't defend.");
+                            Console.ResetColor();
                         }
                         break;
                     default:
@@ -136,7 +153,9 @@ namespace bordertale.Helpers
                         }
                         player.armour.RemoveAll(item => item.durability <= 0);
                     }
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(mob.attack);
+                    Console.ResetColor();
                     player.Damage(damage);
                     if (mob.effects != null)
                     {

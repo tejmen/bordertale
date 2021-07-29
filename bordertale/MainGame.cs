@@ -75,11 +75,9 @@ namespace bordertale
         public static void Prompt()
         {
             Console.WriteLine();
-            PrintUtils.GetHash(31, ConsoleColor.Red);
-            Console.ForegroundColor = ConsoleColor.Red;
+            PrintUtils.GetHash(31);
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("(You can 'move', 'quit', 'look', 'talk', 'equip', 'help', 'stats' or 'act' or 'mission')");
-            Console.ResetColor();
             bool inLoop = true;
             while (inLoop)
             {

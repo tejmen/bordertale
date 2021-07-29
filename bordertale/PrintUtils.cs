@@ -169,9 +169,9 @@ namespace bordertale
             {
                 Console.ForegroundColor = color;
             }
-            PrintUtils.GetHash(length);
-            PrintUtils.CenterPadHash(text, length);
-            PrintUtils.GetHash(length);
+            PrintUtils.GetHash(length, color);
+            PrintUtils.CenterPadHash(text, length, color);
+            PrintUtils.GetHash(length, color);
             Console.ResetColor();
         }
 
@@ -201,9 +201,9 @@ namespace bordertale
             {
                 Console.ForegroundColor = color;
             }
-            PrintUtils.GetHash(length);
-            PrintUtils.LeftPadHash(text, length);
-            PrintUtils.GetHash(length);
+            PrintUtils.GetHash(length, color);
+            PrintUtils.LeftPadHash(text, length, color);
+            PrintUtils.GetHash(length, color);
             Console.ResetColor();
         }
 
