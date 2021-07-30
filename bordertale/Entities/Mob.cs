@@ -11,6 +11,8 @@ namespace bordertale.Entities
 
         public List<Effects> effects;
 
+        public List<Effects> originalEffects;
+
         public Mob(string appear, string attack, string kill, string defeat, int max, int ap, int xp, int money, List<Effects> effects = null)
         {
             this.appear = appear;
@@ -23,6 +25,18 @@ namespace bordertale.Entities
             this.xp = xp;
             this.money = money;
             this.effects = effects;
+            this.originalEffects = effects;
+        }
+
+        public void Reset()
+        {
+            this.hp = max;
+            this.effects = originalEffects;
+        }
+
+        public int GetMax()
+        {
+            return this.max;
         }
     }
 }
