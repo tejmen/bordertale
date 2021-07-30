@@ -13,7 +13,14 @@ namespace bordertale.Helpers
     {
         public static void Combat(Mob mob, Player player, bool skipForTesting = false)
         {
-            Console.Clear();
+            if (mob.hp != mob.GetMax() && mob.effects != mob.originalEffects)
+            {
+                mob.Reset();
+            }
+            if (!skipForTesting)
+            {
+                Console.Clear();
+            }
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(mob.appear);
             Console.ResetColor();
