@@ -117,8 +117,9 @@ namespace bordertale
                         AcknowledgementsScreen();
                         break;
                     case "resume":
-                        inLoop = false;
+                        inLoop = true;
                         // TODO Add ResumeGame() Functionality, ideally from a json object stored through a file.
+                        Console.WriteLine("This feature is not yet implemented.");
                         break;
                     default:
                         Console.WriteLine("Please enter a valid command.");
@@ -136,6 +137,7 @@ namespace bordertale
             PrintUtils.CenterPadHash("Beta Tested by:", 31, ConsoleColor.Green);
             PrintUtils.LeftPadHash("• appcreatorguy ", 31, ConsoleColor.Green);
             PrintUtils.LeftPadHash("• tejmen09 ", 31, ConsoleColor.Green);
+            PrintUtils.LeftPadHash("• kingsley godfrey ", 31, ConsoleColor.Green);
             PrintUtils.LeftPadHash("Helped By:", 31, ConsoleColor.Green);
             PrintUtils.LeftPadHash("• appcreatorguy", 31, ConsoleColor.Green);
             PrintUtils.LeftPadHash("• tejmen09", 31, ConsoleColor.Green);
@@ -155,7 +157,7 @@ namespace bordertale
             PrintUtils.LeftPadHash($"You have {MainGame.player.xp} xp and you are at level {Convert.ToInt32(MainGame.player.xp / 1000)}.", len, color);
             PrintUtils.LeftPadHash($"You have {MainGame.player.ap} strength.", len, color);
             PrintUtils.LeftPadHash($"You have ₴ {MainGame.player.money}", len, color);
-            PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} of damage.", len, color);
+            PrintUtils.LeftPadHash($"Your current weapon, the {MainGame.player.weapon.name} does {MainGame.player.weapon.ap} damage.", len, color);
             String inventory = "Your Inventory contains: ";
             if (MainGame.player.inventory != null)
             {
@@ -209,10 +211,10 @@ namespace bordertale
 #                            #         ████████████          #                                        #
 #                            #                               #                                        #
 #    [3]Helmet      ₴ 30     #      [4]Chestplate ₴ 40       #     [5]Shield     ₴ 35                 #");
-            PrintUtils.GetHash(103);
-            PrintUtils.CenterPadHash("Type the number of the you want to buy to purchase. Type back to go back.", 103);
-            PrintUtils.CenterPadHash($"You have ₴{MainGame.player.money.ToString()}.", 103);
-            PrintUtils.GetHash(103);
+            PrintUtils.GetHash(103, ConsoleColor.Cyan);
+            PrintUtils.CenterPadHash("Type the number of the you want to buy to purchase. Type back to go back.", 103, ConsoleColor.Cyan);
+            PrintUtils.CenterPadHash($"You have ₴{MainGame.player.money.ToString()}.", 103, ConsoleColor.Cyan);
+            PrintUtils.GetHash(103, ConsoleColor.Cyan);
             bool inLoop = true;
             while (inLoop)
             {

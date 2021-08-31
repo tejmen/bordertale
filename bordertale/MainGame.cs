@@ -69,7 +69,7 @@ namespace bordertale
         }
         public static void MainGameLoop()
         {
-
+            Console.Clear();
             player.PrintLocation();
             while (!player.dead)
             {
